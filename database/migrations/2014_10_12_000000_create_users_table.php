@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default('0');
             $table->string('passport_number')->nullable()->default(null);
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
