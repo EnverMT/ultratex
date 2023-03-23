@@ -68,7 +68,7 @@
                             <div id="tab1" class="tab-pane active">
                                 <div class="products-slick" data-nav="#slick-nav-1">
 
-                                    @foreach ($products_latest as $product)
+                                    @foreach ($products as $product)
                                         <!-- product -->
                                         <div class="product">
                                             <div class="product-img">
