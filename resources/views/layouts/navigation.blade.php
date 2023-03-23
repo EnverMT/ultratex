@@ -7,11 +7,12 @@
                 <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                <li><a href="#"><i class="fa fa-telegram"></i> Telegram</a></li>
             </ul>
-            <ul class="header-links pull-right">
+            {{-- <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
                 <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
     <!-- /TOP HEADER -->
@@ -32,7 +33,7 @@
                 </div>
                 <!-- /LOGO -->
 
-                <!-- SEARCH BAR -->
+                {{-- <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
                         <form>
@@ -114,7 +115,7 @@
                         <!-- /Menu Toogle -->
                     </div>
                 </div>
-                <!-- /ACCOUNT -->
+                <!-- /ACCOUNT --> --}}
             </div>
             <!-- row -->
         </div>
@@ -149,7 +150,7 @@
 <!-- /NAVIGATION -->
 
 
-{{-- 
+{{--
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

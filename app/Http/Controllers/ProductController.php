@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,12 @@ class ProductController extends Controller
     public function index()
     {
         //
+    }
+
+    public function filter_by_category(Category $category, $limit = 10)
+    {
+        return Product::with('category')->where('category_id', '=', $category->id)
+            ->limit($limit)->get();
     }
 
     /**

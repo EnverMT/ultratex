@@ -12,6 +12,7 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $products = Product::with('category')->get();
-        return view('home', compact(['categories', 'products']));
+        $products_latest = Product::with('category')->latest()->limit(3)->get();
+        return view('home', compact(['categories', 'products', 'products_latest']));
     }
 }
