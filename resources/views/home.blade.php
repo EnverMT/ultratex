@@ -5,29 +5,19 @@
         </h2>
     </x-slot>
 
-    <!-- SECTION -->
-    <div>
-        <!-- container -->
-        <div>
-            <!-- row -->
-            <div>
-                <!-- shop -->
+    <div class="mt-8 grid grid-cols-3 gap-10 container">
+
+        @foreach ($categories as $category)
+            <div class="flex flex-col">
                 <div>
-                    <div>
-                        <div">
-                            <img src="./img/shop01.png" alt="">
-                    </div>
-                    <div>
-                        <h3>{{ __('Laptop') }}<br>{{ __('Collection') }}</h3>
-                        <a href="#">{{ __('Shop now') }} <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
+                    <img src="{{ asset('assets/img/shop01.png') }}" alt="">
+                </div>
+                <div class="p-3 m-2">
+                    <h3>{{ __($category->title) }}<br>{{ __('Collection') }}</h3>
+                    <a href="#">{{ __('Shop now') }} <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- /shop -->
-        </div>
-        <!-- /row -->
+        @endforeach
+
     </div>
-    <!-- /container -->
-    </div>
-    <!-- /SECTION -->
 </x-app-layout>
