@@ -52,7 +52,9 @@
                         <div class="section-nav">
                             <ul class="section-tab-nav tab-nav">
                                 @foreach ($categories as $category)
-                                    <li><a data-toggle="tab" href="#tab1">{{ __($category->title) }}</a></li>
+                                    <li><a
+                                            href="{{ route('home', ['category_id' => $category]) }}">{{ __($category->title) }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -100,6 +102,7 @@
                                                             class="tooltipp">{{ __('quick view') }}</span></button>
                                                 </div>
                                             </div>
+                                            <a href="{{ route('product.show', ['product' => $product]) }}">More</a>
                                             <div class="add-to-cart">
                                                 <button class="add-to-cart-btn">
                                                     <i class="fa fa-shopping-cart"></i>{{ __('add to cart') }}</button>

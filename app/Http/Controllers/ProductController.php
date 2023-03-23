@@ -16,12 +16,6 @@ class ProductController extends Controller
         //
     }
 
-    public function filter_by_category(Category $category, $limit = 10)
-    {
-        return Product::with('category')->where('category_id', '=', $category->id)
-            ->limit($limit)->get();
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -43,7 +37,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**

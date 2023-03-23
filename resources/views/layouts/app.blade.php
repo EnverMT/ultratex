@@ -55,6 +55,10 @@
     {{ $slot }}
     {{-- </main> --}}
 
+    @include('layouts.newsletter')
+
+    @include('layouts.footer')
+
 
     <!-- jQuery Plugins -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
