@@ -1,7 +1,6 @@
 <!-- HEADER -->
 <header>
     <!-- TOP HEADER -->
-    {{ __('home.welcome') }}
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
@@ -25,7 +24,7 @@
             @auth
                 <ul class="header-links pull-right">
                     @if (Auth::user()->is_admin == 1)
-                        <li><a href="{{ route('dashboard') }}"><i class="fa fa-columns"></i>Dashboard</a></li>
+                        <li><a href="{{ route('dashboard') }}"><i class="fa fa-columns"></i>@lang('header.dashboard')</a></li>
                     @endif
                     <li><a href="{{ route('profile.edit') }}"><i class="fa fa-user-o"></i>{{ Auth::user()->name }}</a></li>
 
@@ -35,14 +34,14 @@
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                             this.closest('form').submit();"><i
-                                    class="fa fa-sign-out"></i>Log out</a>
+                                    class="fa fa-sign-out"></i>@lang('header.logout')</a>
                         </form>
                     </li>
                 </ul>
             @else
                 <ul class="header-links pull-right">
-                    <li><a href="{{ route('login') }}"><i class=""></i>Log in</a></li>
-                    <li><a href="{{ route('register') }}"><i class=""></i>Register</a></li>
+                    <li><a href="{{ route('login') }}"><i class=""></i>@lang('header.login')</a></li>
+                    <li><a href="{{ route('register') }}"><i class=""></i>@lang('header.register')</a></li>
                 </ul>
 
             @endauth
