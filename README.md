@@ -7,4 +7,3 @@
 [ ] Зона Клиента (vue3 + vue router + vuex)    
 [ ] Деплой + платежная система  
 
-test deploy
