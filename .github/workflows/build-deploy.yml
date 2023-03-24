@@ -24,6 +24,6 @@ jobs:
           script: |
             cd /var/www/ultratex.uz
             sudo git pull
-            php artisan migrate
+            sudo php artisan migrate
 
 
