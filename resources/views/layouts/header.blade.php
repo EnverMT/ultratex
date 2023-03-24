@@ -4,10 +4,9 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
-                <li><a href="#"><i class="fa fa-telegram"></i> Telegram</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> +998 97 736 58 85</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> Бекабад, ул.Аббасова, UltraTex </a></li>
+                <li><a href="https://t.me/ultra_tex/31"><i class="fa fa-telegram"></i> Telegram</a></li>
             </ul>
 
             <select class="changeLang">
@@ -15,7 +14,7 @@
                 <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>Рус</option>
                 <option value="uz" {{ session()->get('locale') == 'uz' ? 'selected' : '' }}>Узб</option>
             </select>
-            
+
             @auth
                 <ul class="header-links pull-right">
                     @if (Auth::user()->is_admin == 1)
