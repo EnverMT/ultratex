@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('brand');
-            $table->string('model');
-            $table->string('kod');
+            $table->string('brand')->nullable();
+            $table->string('model')->nullable();
+            $table->string('kod')->nullable();
         });
     }
 
