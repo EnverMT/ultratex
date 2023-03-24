@@ -57,7 +57,6 @@
     {{ $slot }}
     {{-- </main> --}}
 
-    @include('layouts.newsletter')
 
     @include('layouts.footer')
 
