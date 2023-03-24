@@ -47,6 +47,8 @@
 
 <body>
 
+    @include('layouts.header')
+
     <!-- Navigation -->
     @include('layouts.navigation')
 
