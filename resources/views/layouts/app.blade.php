@@ -45,7 +45,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="w-75">
+<body>
 
     @include('layouts.header')
 
