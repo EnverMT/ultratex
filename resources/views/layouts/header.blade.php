@@ -4,11 +4,12 @@
     <div class="mx-auto max-w-screen-2xl">
         <div class="flex items-center justify-between flex-wrap">
             <div class="flex items-center">
-                <div class="text-2xl"><i class="fa-brands fa-google text-red-500"></i></div>
+                <a href="{{ route('home') }}">
+                    <div class="text-2xl"><i class="fa-brands fa-google text-red-500"></i></div>
+                </a>
                 <ul class="flex-row lg:flex justify-between flex-wrap">
                     <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-phone text-red-700"></i>
-                            +998 97 736
-                            58 85</a></li>
+                            +998 97 736 58 85</a></li>
                     <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-map-marker text-red-700">
                             </i> Бекабад, ул.Аббасова, UltraTex </a></li>
                     <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31">

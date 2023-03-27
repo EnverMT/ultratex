@@ -51,20 +51,23 @@
                 {{-- <div class="dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"> --}}
                 <div class="dark:text-white flex flex-wrap">
                     @foreach ($products as $product)
-                        <div class="flex flex-col max-w-sm mx-auto">
-                            <div class="m-3 p-2 border border-gray-200 dark:border-gray-500 relative">
-                                <div class="absolute top-0 right-0 my-5 bg-red-400 px-3 mr-4 rounded-md">
-                                    <span> new </span>
-                                </div>
-                                <img src="{{ asset('assets/img/product01.png') }}" alt="">
-                                <div class="flex flex-col items-center">
-                                    <span class="uppercase text-gray-400 text-sm">{{ $product->category->title }}</span>
-                                    <span class="uppercase font-semibold">{{ $product->title }}</span>
-                                    <span class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
-                                        сум</span>
+                        <a href="{{ route('product.show', $product->id) }}">
+                            <div class="flex flex-col max-w-sm mx-auto">
+                                <div class="m-3 p-2 border border-gray-200 dark:border-gray-500 relative">
+                                    <div class="absolute top-0 right-0 my-5 bg-red-400 px-3 mr-4 rounded-md">
+                                        <span> new </span>
+                                    </div>
+                                    <img src="{{ asset('assets/img/product01.png') }}" alt="">
+                                    <div class="flex flex-col items-center">
+                                        <span
+                                            class="uppercase text-gray-400 text-sm">{{ $product->category->title }}</span>
+                                        <span class="uppercase font-semibold">{{ $product->title }}</span>
+                                        <span class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
+                                            сум</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
 
