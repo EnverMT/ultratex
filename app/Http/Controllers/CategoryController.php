@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -20,7 +23,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('category.create', compact('categories'));
     }
 
     /**
@@ -28,7 +32,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'picture_url' => 'image|mimes:png,jpg,jpeg',
+            'parentCategory' => 'numeric'
+        ]);
+
+        $input = $request->only(['title', 'picture_url', 'parentCategory']);
+
+        if ($image = $request->file('picture_url')) {
+
+        }
+
+        Category::create($input);
+        return redirect()->route('category.index')->with('success', 'category created');
     }
 
     /**
