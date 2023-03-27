@@ -40,11 +40,16 @@ class CategoryController extends Controller
 
         $input = $request->only(['title', 'picture_url', 'parentCategory']);
 
-        if ($image = $request->file('picture_url')) {
-
+        if ($request->file('picture_url')) {
+            $path = $request->file('picture_url')->store('images');
         }
 
-        Category::create($input);
+        Category::create([
+            'title' => $request->title,
+            'parentCategory' => $request->parentCategory,
+            'picture_url' => $path
+        ]);
+
         return redirect()->route('category.index')->with('success', 'category created');
     }
 
