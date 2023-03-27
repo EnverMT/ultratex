@@ -1,18 +1,20 @@
 <!-- HEADER -->
 <header class="bg-gray-800 text-white text-sm">
     <!-- TOP HEADER -->
-    <div class="mx-auto max-w-screen-xl ">
+    <div class="mx-auto max-w-screen-2xl">
         <div class="flex items-center justify-between flex-wrap">
-
-            <ul class="flex-row lg:flex justify-between flex-wrap">
-                <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-phone text-red-700"></i>
-                        +998 97 736
-                        58 85</a></li>
-                <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-map-marker text-red-700">
-                        </i> Бекабад, ул.Аббасова, UltraTex </a></li>
-                <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31">
-                        <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
-            </ul>
+            <div class="flex items-center">
+                <div class="text-2xl"><i class="fa-brands fa-google text-red-500"></i></div>
+                <ul class="flex-row lg:flex justify-between flex-wrap">
+                    <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-phone text-red-700"></i>
+                            +998 97 736
+                            58 85</a></li>
+                    <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-map-marker text-red-700">
+                            </i> Бекабад, ул.Аббасова, UltraTex </a></li>
+                    <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31">
+                            <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
+                </ul>
+            </div>
 
             <div class="flex items-center">
                 <div class="p-1 sm:hidden mx-3">
