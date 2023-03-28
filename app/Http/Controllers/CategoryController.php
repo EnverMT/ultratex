@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryStoreRequest;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryStoreRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -36,10 +37,10 @@ class CategoryController extends Controller
             'title' => 'required|string',
             'isMain' => 'string',
             'picture_url' => 'image|mimes:png,jpg,jpeg',
-            'parentCategory' => 'numeric'
+            'parent_id' => 'numeric'
         ]);
 
-        $input = $request->only(['title', 'isMain', 'picture_url', 'parentCategory']);
+        $input = $request->only(['title', 'isMain', 'picture_url', 'parent_id']);
 
         if ($request->file('picture_url')) {
             $path = $request->file('picture_url')->store('images');
@@ -50,7 +51,7 @@ class CategoryController extends Controller
         Category::create([
             'title' => $request->title,
             'isMain' => $request->isMain ? 1 : 0,
-            'parentCategory' => $request->parentCategory,
+            'parent_id' => $request->parent_id,
             'picture_url' => $path
         ]);
 
@@ -79,6 +80,30 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'title' => 'required|string',
+            'isMain' => 'string',
+            'picture_url' => 'image|mimes:png,jpg,jpeg',
+            'parent_id' => 'numeric'
+        ]);
+
+        $input = $request->only(['title', 'isMain', 'picture_url', 'parent_id']);
+
+        if ($request->file('picture_url')) {
+            $path = $request->file('picture_url')->store('images');
+            !is_null($category->picture_url) && Storage::delete($category->picture_url);
+        } else {
+            $path = null;
+        }
+
+        $category->fill([
+            'title' => $request->title,
+            'isMain' => $request->isMain ? 1 : 0,
+            'parent_id' => $request->parent_id,
+            'picture_url' => $path ?? $category->picture_url
+        ])->save();
+
+        return redirect()->route('category.index')->with('success', 'category updated');
     }
 
     /**
@@ -86,6 +111,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        !is_null($category->picture_url) && Storage::delete($category->picture_url);
+
         $category->delete();
         return redirect()->route('category.index')->with('success', 'Category has been deleted');
     }

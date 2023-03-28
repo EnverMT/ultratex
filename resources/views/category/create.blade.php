@@ -32,8 +32,8 @@
                     </div>
 
                     <div class="m-4">
-                        <label for="parentCategory">parent category:</label>
-                        <select name="parentCategory" id="parentCategory">
+                        <label for="parent_id">parent category:</label>
+                        <select name="parent_id" id="parent_id">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach

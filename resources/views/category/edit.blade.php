@@ -11,8 +11,9 @@
 
                 @endif
 
-                <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
 
                     <div class="m-4">
                         <label for="title">Title:</label>
@@ -30,8 +31,8 @@
                     </div>
 
                     <div class="m-4">
-                        <label for="parentCategory">parent category:</label>
-                        <select name="parentCategory" id="parentCategory">
+                        <label for="parent_id">parent category:</label>
+                        <select name="parent_id" id="parent_id">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
