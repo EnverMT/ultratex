@@ -25,12 +25,16 @@
 
     @include('components.header')
 
-    <!-- Navigation -->
-    {{-- @include('layouts.navigation') --}}
-
-    <!-- Page Content -->
     <main class="mb-auto">
-        {{ $slot }}
+        <div class="flex">
+            <div>
+                @include('components.dashboard.navigation')
+            </div>
+
+            <div>
+                {{ $slot }}
+            </div>
+        </div>
     </main>
 
 

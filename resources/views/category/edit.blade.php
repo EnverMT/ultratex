@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-dashboard>
     <div class="max-w-screen-2xl mx-auto">
         <div class="flex ">
-            @include('components.dashboard.navigation')
-
             <div class="m-5">
                 @if ($errors->any())
                     <ul class=" text-red-600">
@@ -18,12 +16,12 @@
 
                     <div class="m-4">
                         <label for="title">Title:</label>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" value="{{ $category->title }}">
                     </div>
 
                     <div class="m-4">
                         <label for="isMain">Is Main?:</label>
-                        <input type="checkbox" name="isMain" id="isMain">
+                        <input type="checkbox" name="isMain" id="isMain" {{ $category->isMain ? 'checked' : '' }}>
                     </div>
 
                     <div class="m-4">
@@ -48,4 +46,4 @@
         </div>
     </div>
 
-</x-app-layout>
+</x-dashboard>

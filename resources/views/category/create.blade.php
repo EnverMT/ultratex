@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-dashboard>
     <div class="max-w-screen-2xl mx-auto">
         <div class="flex ">
-            @include('components.dashboard.navigation')
-
             <div class="m-5">
 
                 <h2>Add new Category</h2>
@@ -50,4 +48,4 @@
         </div>
     </div>
 
-</x-app-layout>
+</x-dashboard>
