@@ -14,7 +14,7 @@ class Brand extends Model
     protected $table = 'brands';
     protected $fillable = ['title', 'category_id'];
 
-    public function product(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

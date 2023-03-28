@@ -14,7 +14,7 @@ class Category extends Model
 
     protected $fillable = ['title', 'picture_url', 'isMain', 'parent_id'];
 
-    public function products(): HasMany
+    public function brands(): HasMany
     {
         return $this->hasMany(Brand::class);
     }

@@ -13,8 +13,8 @@ class Picture extends Model
     protected $table = 'pictures';
     protected $guarded = false;
 
-    public function product(): BelongsTo
+    public function products(): BelongsTo
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Product::class);
     }
 }

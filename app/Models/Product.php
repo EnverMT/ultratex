@@ -14,7 +14,7 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = false;
 
-    public function category(): BelongsTo
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }

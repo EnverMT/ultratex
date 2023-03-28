@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <header class="bg-gray-800 text-white text-sm">
     <!-- TOP HEADER -->
-    <div class="mx-auto max-w-screen-2xl">
+    <div class=" max-w-screen-xl mx-auto">
         <div class="flex items-center justify-between flex-wrap">
             <div class="flex items-center">
                 <a href="{{ route('home') }}">

@@ -26,12 +26,12 @@
     @include('components.header')
 
     <main class="mb-auto">
-        <div class="flex">
+        <div class="flex max-w-screen-xl mx-auto">
             <div>
                 @include('components.dashboard.navigation')
             </div>
 
-            <div>
+            <div class="grow">
                 {{ $slot }}
             </div>
         </div>
