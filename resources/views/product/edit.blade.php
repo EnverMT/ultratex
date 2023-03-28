@@ -55,6 +55,12 @@
                             value={{ $product->details }}></textarea>
                     </div>
 
+                    {{-- Images --}}
+                    <div class="m-4 flex flex-col">
+                        <label for="url">Add images</label>
+                        <input type="file" name="url[]" id="url" multiple>
+                    </div>
+
                     <div class="m-4 flex flex-col">
                         <label for="brand_id">Brand:</label>
                         <select name="brand_id" id="brand_id" class="dark:bg-slate-800">
@@ -67,9 +73,12 @@
                     </div>
                 </form>
 
-                {{-- Images --}}
+
+
+
+
                 <div class="m-4 flex flex-col">
-                    <label for="details">Images</label>
+                    <label for="details">Current Images:</label>
                     <div class="flex flex-wrap">
                         @foreach ($product->pictures as $pic)
                             <div class="relative">

@@ -72,6 +72,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        //dd($request->url);
+        if ($request->file('url')) {
+            foreach ($request->file('url') as $image) {
+                $path = $image->store('images', ['disk' => 'public']);
+                Picture::create([
+                    'product_id' => $product->id,
+                    'url' => $path
+                ]);
+            }
+        }
+
         $product->fill($request->all())->save();
 
         return redirect()->route('product.index')->with('success', 'product created');
