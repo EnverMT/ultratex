@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryStoreRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
@@ -43,7 +44,8 @@ class CategoryController extends Controller
         $input = $request->only(['title', 'isMain', 'picture_url', 'parent_id']);
 
         if ($request->file('picture_url')) {
-            $path = $request->file('picture_url')->store('images');
+            $file = request()->file('picture_url');
+            $path = $file->store('images', ['disk' => 'public']);
         } else {
             $path = null;
         }
@@ -90,7 +92,8 @@ class CategoryController extends Controller
         $input = $request->only(['title', 'isMain', 'picture_url', 'parent_id']);
 
         if ($request->file('picture_url')) {
-            $path = $request->file('picture_url')->store('images');
+            $file = request()->file('picture_url');
+            $path = $file->store('images', ['disk' => 'public']);
             !is_null($category->picture_url) && Storage::delete($category->picture_url);
         } else {
             $path = null;

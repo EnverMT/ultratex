@@ -10,19 +10,38 @@
                 </div>
                 <table class="">
                     <thead class="border-b border-gray-800">
-                        <th>id</th>
-                        <th>title</th>
-                        <th>isMain?</th>
-                        <th>Action</th>
-
+                        <th>Категория</th>
+                        <th>Субкатегория</th>
+                        <th>Фото</th>
+                        <th>Действия</th>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
-                            <tr class=" border-b border-gray-800">
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->title }}</td>
-                                <td>{{ $category->isMain }}</td>
-                                <td>
+                            <tr class="">
+                                @if ($category->isMain)
+                                    <td class="border border-gray-400">{{ $category->title }}</td>
+                                @else
+                                    <td class="border border-gray-400">{{ $category->parent->title }}</td>
+                                @endif
+
+                                @if ($category->isMain)
+                                    <td class="border border-gray-400">
+                                        <div class="flex justify-center">
+                                            <span>-</span>
+                                        </div>
+                                    </td>
+                                @else
+                                    <td class="border border-gray-400">{{ $category->title }}</td>
+                                @endif
+
+                                <td class="border border-gray-400">
+                                    @if ($category->picture_url)
+                                        <img src="{{ asset('/storage/' . $category->picture_url) }}" alt="Фото"
+                                            class=" w-24 h-24 object-scale-down">
+                                    @endif
+                                </td>
+
+                                <td class="border border-gray-400">
                                     <form action="{{ route('category.destroy', $category->id) }}" method="Post"
                                         class="flex">
                                         <div
