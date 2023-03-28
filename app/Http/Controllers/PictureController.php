@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Picture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
@@ -60,6 +61,8 @@ class PictureController extends Controller
      */
     public function destroy(Picture $picture)
     {
+        $url = '/public/' . $picture->url;
+        !is_null($picture->url) && Storage::delete($url);
         $picture->delete();
         return redirect()->back();
     }

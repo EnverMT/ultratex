@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -93,6 +94,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $pictures = Picture::where('product_id', '=', $product->id)->get();
+
+        foreach ($pictures as $pic) {
+            $url = '/public/' . $pic->url;
+            !is_null($pic->url) && Storage::delete($url);
+            $pic->delete();
+        }
+
         $product->delete();
         return redirect()->route('product.index')->with('success', 'product deleted');
     }
