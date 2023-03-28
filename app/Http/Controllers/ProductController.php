@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\Picture;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -34,8 +35,17 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        // ['title', 'kod', 'model', 'description', 'details', 'price', 'quantity', 'brand_id'];
-        Product::create($request->all());
+        $product = Product::create($request->all());
+
+        if ($request->file('url')) {
+            foreach ($request->file('url') as $image) {
+                $path = $image->store('images', ['disk' => 'public']);
+                Picture::create([
+                    'product_id' => $product->id,
+                    'url' => $path
+                ]);
+            }
+        }
 
         return redirect()->route('product.index')->with('success', 'product created');
     }

@@ -56,6 +56,11 @@
                         </select>
                     </div>
 
+                    <div class="m-4 flex flex-col">
+                        <label for="url">Images</label>
+                        <input type="file" name="url[]" id="url" multiple>
+                    </div>
+
                     <button class="border border-slate-600 py-2 px-4 rounded-md bg-green-600 m-4"
                         type="submit">Add</button>
 
