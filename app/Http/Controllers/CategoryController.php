@@ -114,7 +114,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        !is_null($category->picture_url) && Storage::delete($category->picture_url);
+        $url = '/public/' . $category->picture_url;
+        !is_null($category->picture_url) && Storage::delete($url);
 
         $category->delete();
         return redirect()->route('category.index')->with('success', 'Category has been deleted');

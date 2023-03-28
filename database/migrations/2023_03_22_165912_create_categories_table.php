@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('picture_url')->nullable();
+            $table->bigInteger('parent_id')->nullable();
+            $table->boolean('isMain')->default(0)->nullable();
             $table->timestamps();
         });
     }

@@ -21,7 +21,15 @@
                                 @if ($category->isMain)
                                     <td class="border border-gray-400">{{ $category->title }}</td>
                                 @else
-                                    <td class="border border-gray-400">{{ $category->parent->title }}</td>
+                                    @if ($category->parent)
+                                        <td class="border border-gray-400">{{ $category->parent->title }}</td>
+                                    @else
+                                        <td class="border border-gray-400">
+                                            <div class="flex justify-center">
+                                                <span>-</span>
+                                            </div>
+                                        </td>
+                                    @endif
                                 @endif
 
                                 @if ($category->isMain)
