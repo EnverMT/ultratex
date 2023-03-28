@@ -43,6 +43,8 @@ class CategoryController extends Controller
 
         if ($request->file('picture_url')) {
             $path = $request->file('picture_url')->store('images');
+        } else {
+            $path = null;
         }
 
         Category::create([
@@ -68,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -76,7 +78,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
     }
 
     /**
@@ -84,6 +85,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('category.index')->with('success', 'Category has been deleted');
     }
 }

@@ -4,8 +4,6 @@
             @include('components.dashboard.navigation')
 
             <div class="m-5">
-
-                <h2>Add new Category</h2>
                 @if ($errors->any())
                     <ul class=" text-red-600">
                         @foreach ($errors->all() as $error)
@@ -43,7 +41,7 @@
                     </div>
 
                     <button class="border border-slate-600 py-2 px-4 rounded-md bg-green-600 m-4"
-                        type="submit">Add</button>
+                        type="submit">Update</button>
 
                 </form>
             </div>
