@@ -68,7 +68,7 @@
                                             </div>
                                             @csrf
                                             @method('DELETE')
-                                            <div class="border  bg-red-600 hover:bg-green-400 rounded-md m-2"><button
+                                            <div class="border  bg-red-600 hover:bg-red-400 rounded-md m-2"><button
                                                     type="submit" class="py-2 px-4">Delete</button></div>
                                         </form>
                                     </td>

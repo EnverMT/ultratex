@@ -7,15 +7,17 @@
                     <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Категории:</h3>
                     <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
                         @foreach ($categories as $category)
-                            <li class="w-full">
-                                <div class="flex items-center pl-3">
-                                    <input id="category-{{ $category->id }}" name="category" type="checkbox"
-                                        value="{{ $category->id }}"
-                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="category-{{ $category->id }}"
-                                        class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $category->title }}</label>
-                                </div>
-                            </li>
+                            @if ($category->isMain)
+                                <li class="w-full">
+                                    <div class="flex items-center pl-3">
+                                        <input id="category-{{ $category->id }}" name="category" type="checkbox"
+                                            value="{{ $category->id }}"
+                                            class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                        <label for="category-{{ $category->id }}"
+                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $category->title }}</label>
+                                    </div>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>

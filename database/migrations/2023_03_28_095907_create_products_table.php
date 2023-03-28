@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('details')->nullable();
             $table->float('price');
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable();
             $table->foreignId('brand_id')->constrained('brands')->onUpdate('cascade')->restrictOnDelete();
             $table->timestamps();
         });

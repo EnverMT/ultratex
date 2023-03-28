@@ -18,7 +18,8 @@
 
                     <div class="m-4 flex flex-col">
                         <label for="model">Model:</label>
-                        <input type="text" name="model" id="model" class="dark:bg-slate-800">
+                        <input type="text" name="model" id="model" class="dark:bg-slate-800"
+                            value={{ old('model') }}>
                     </div>
 
                     <div class="m-4 flex flex-col">

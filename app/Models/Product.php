@@ -12,7 +12,7 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'products';
-    protected $guarded = ['title', 'kod', 'model', 'description', 'details', 'price', 'quantity', 'brand_id'];
+    protected $fillable = ['title', 'kod', 'model', 'description', 'details', 'price', 'quantity', 'brand_id'];
 
     public function brand(): BelongsTo
     {
