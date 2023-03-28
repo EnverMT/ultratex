@@ -10,8 +10,8 @@
             {{-- pictures --}}
             <div class="sm:container">
                 @foreach ($product->pictures as $pic)
-                    <div class="">
-                        <img class=" object-contain mx-auto" src="{{ asset($pic->url) }}" alt="">
+                    <div class=" w-96 h-96 object-scale-down mx-auto">
+                        <img src="{{ asset('/storage/' . $pic->url) }}" alt="Фото">
                     </div>
                 @endforeach
             </div>
