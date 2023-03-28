@@ -25,5 +25,6 @@ jobs:
             cd /var/www/ultratex.uz
             sudo git pull
             sudo php artisan migrate
+            sudo npm run build
 
 
