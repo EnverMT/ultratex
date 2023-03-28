@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -21,7 +22,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('brand.create', compact('categories'));
     }
 
     /**
@@ -29,7 +31,13 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'category_id' => 'numeric'
+        ]);
+        Brand::create($request->all());
+
+        return redirect()->route('brand.index')->with('success', 'brand created');
     }
 
     /**
@@ -45,7 +53,8 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        $categories = Category::all();
+        return view('brand.edit', compact('categories', 'brand'));
     }
 
     /**
@@ -53,7 +62,14 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'category_id' => 'numeric'
+        ]);
+
+        $brand->fill($request->all())->save();
+
+        return redirect()->route('brand.index')->with('success', 'brand created');
     }
 
     /**
@@ -61,6 +77,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+        return redirect()->route('brand.index')->with('success', 'brand deleted');
     }
 }
