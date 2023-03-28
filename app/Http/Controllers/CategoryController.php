@@ -34,11 +34,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
+            'isMain' => 'string',
             'picture_url' => 'image|mimes:png,jpg,jpeg',
             'parentCategory' => 'numeric'
         ]);
 
-        $input = $request->only(['title', 'picture_url', 'parentCategory']);
+        $input = $request->only(['title', 'isMain', 'picture_url', 'parentCategory']);
 
         if ($request->file('picture_url')) {
             $path = $request->file('picture_url')->store('images');
@@ -46,6 +47,7 @@ class CategoryController extends Controller
 
         Category::create([
             'title' => $request->title,
+            'isMain' => $request->isMain ? 1 : 0,
             'parentCategory' => $request->parentCategory,
             'picture_url' => $path
         ]);

@@ -22,6 +22,11 @@
                     </div>
 
                     <div class="m-4">
+                        <label for="isMain">Is Main?:</label>
+                        <input type="checkbox" name="isMain" id="isMain">
+                    </div>
+
+                    <div class="m-4">
                         <label for="pictures">Image</label>
                         <input type="file" name="picture_url" multiple>
                     </div>
