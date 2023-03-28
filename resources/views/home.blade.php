@@ -59,7 +59,10 @@
                                     <div class="absolute top-0 right-0 my-5 bg-red-400 px-3 mr-4 rounded-md">
                                         <span> new </span>
                                     </div>
-                                    <img src="{{ asset('assets/img/product01.png') }}" alt="">
+                                    @foreach ($product->pictures as $pic)
+                                        <img src="{{ asset('/storage/' . $pic->url) }}"
+                                            class="w-48 h-48 object-scale-down" alt="Фото">
+                                    @endforeach
                                     <div class="flex flex-col items-center">
                                         <span
                                             class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>

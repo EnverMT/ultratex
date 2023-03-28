@@ -14,6 +14,8 @@
                 @endif
 
                 <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                    <button class="border border-slate-600 py-2 px-4 rounded-md bg-green-600 m-4"
+                        type="submit">Update</button>
                     @csrf
                     @method('put')
 
@@ -63,11 +65,33 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <button class="border border-slate-600 py-2 px-4 rounded-md bg-green-600 m-4"
-                        type="submit">Update</button>
-
                 </form>
+
+                {{-- Images --}}
+                <div class="m-4 flex flex-col">
+                    <label for="details">Images</label>
+                    <div class="flex flex-wrap">
+                        @foreach ($product->pictures as $pic)
+                            <div class="relative">
+                                <img src="{{ asset('/storage/' . $pic->url) }}" class="w-48 h-48 object-scale-down"
+                                    alt="Фото">
+
+                                <div class="absolute top-0 right-0 ">
+                                    <form action="{{ route('picture.destroy', $pic->id) }}" method="Post"
+                                        class="flex">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="border  bg-red-600 hover:bg-red-400 rounded-md m-2">
+                                            <button type="submit" class="py-2 px-4">Delete</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

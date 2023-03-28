@@ -27,12 +27,14 @@
 
     <main class="mb-auto dark:text-white">
         <div class="flex max-w-screen-xl mx-auto">
-            <div>
-                @include('components.dashboard.navigation')
-            </div>
+            <div class="flex">
+                <div>
+                    @include('components.dashboard.navigation')
+                </div>
 
-            <div class="grow">
-                {{ $slot }}
+                <div>
+                    {{ $slot }}
+                </div>
             </div>
         </div>
     </main>

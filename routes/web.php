@@ -4,8 +4,10 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\PictureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Picture;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +38,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('category', CategoryController::class);
 Route::resource('product', ProductController::class);
 Route::resource('brand', BrandController::class);
+Route::resource('picture', PictureController::class);
 
 require __DIR__ . '/auth.php';
