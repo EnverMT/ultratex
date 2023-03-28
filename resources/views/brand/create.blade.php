@@ -18,12 +18,12 @@
 
                     <div class="m-4">
                         <label for="title">Title:</label>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" class="dark:bg-slate-800">
                     </div>
 
                     <div class="m-4">
                         <label for="category_id">parent category:</label>
-                        <select name="category_id" id="category_id">
+                        <select name="category_id" id="category_id" class="dark:bg-slate-800">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach

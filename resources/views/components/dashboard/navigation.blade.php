@@ -8,6 +8,7 @@
         </li>
         <li class="hover:bg-slate-400 rounded-md my-2"><a class="py-2 px-4" href={{ route('brand.index') }}>Бренды</a>
         </li>
-        <li class="hover:bg-slate-400 rounded-md my-2"><a class="py-2 px-4 href=">Продукты</a></li>
+        <li class="hover:bg-slate-400 rounded-md my-2"><a class="py-2 px-4" href={{ route('product.index') }}>Продукты</a>
+        </li>
     </ul>
 </div>

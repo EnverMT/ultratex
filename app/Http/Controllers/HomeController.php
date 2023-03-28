@@ -19,7 +19,7 @@ class HomeController extends Controller
         }
 
         $categories = Category::all();
-        $products = $query->get();
+        $products = Product::all();
 
         return view('home', compact(['categories', 'products']));
     }

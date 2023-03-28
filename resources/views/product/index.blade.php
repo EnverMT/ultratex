@@ -5,22 +5,28 @@
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <div class="border border-gray-600 rounded-md inline-block m-4 hover:bg-blue-800 bg-blue-600">
-                        <a class=" py-2 px-4" href={{ route('brand.create') }}>Add new Brand</a>
+                        <a class=" py-2 px-4" href={{ route('product.create') }}>Add new Product</a>
                     </div>
                     <table class="min-w-full ">
                         <thead class="bg-white border-b">
                             <tr class=" bg-slate-300 dark:bg-slate-800 font-bold text-lg ">
                                 <th scope="col" class=" px-6 py-4 text-left">
-                                    id
+                                    Category
                                 </th>
                                 <th scope="col" class=" px-6 py-4 text-left">
-                                    Sub-Category
+                                    Sub-category
                                 </th>
                                 <th scope="col" class=" px-6 py-4 text-left">
-                                    Brand
+                                    Model
                                 </th>
                                 <th scope="col" class=" px-6 py-4 text-left">
-                                    Models
+                                    Kod
+                                </th>
+                                <th scope="col" class=" px-6 py-4 text-left">
+                                    Title
+                                </th>
+                                <th scope="col" class=" px-6 py-4 text-left">
+                                    Pictures
                                 </th>
                                 <th scope="col" class=" px-6 py-4 text-left">
                                     Action
@@ -28,32 +34,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($brands as $brand)
+                            @foreach ($products as $product)
                                 <tr class="bg-gray-100 border-b dark:bg-slate-600">
                                     <td class="px-6 py-4 whitespace-nowrap  font-medium ">
-                                        {{ $brand->id }}
+                                        {{ $product->brand->category->title }}
                                     </td>
                                     <td class="  px-6 py-4 whitespace-nowrap">
-                                        {{ $brand->category->title }}
+                                        {{ $product->brand->title }}
                                     </td>
                                     <td class="   px-6 py-4 whitespace-nowrap">
-                                        {{ $brand->title }}
+                                        {{ $product->model }}
+                                    </td>
+                                    <td class="   px-6 py-4 whitespace-nowrap">
+                                        {{ $product->kod }}
+                                    </td>
+                                    <td class="   px-6 py-4 whitespace-nowrap">
+                                        {{ $product->title }}
                                     </td>
                                     <td class="   px-6 py-4 whitespace-nowrap">
                                         <div class="flex flex-wrap">
-                                            @foreach ($brand->products as $product)
-                                                <span
-                                                    class="m-1 bg-slate-300 p-2 rounded-md">{{ $product->model }}</span>
+                                            @foreach ($product->pictures as $pic)
+                                                <img src="{{ asset('/storage/' . $pic->url) }}" alt="Фото">
                                             @endforeach
                                         </div>
                                     </td>
                                     <td class="  whitespace-nowrap flex">
-                                        <form action="{{ route('brand.destroy', $brand->id) }}" method="Post"
+                                        <form action="{{ route('product.destroy', $product->id) }}" method="Post"
                                             class="flex">
                                             <div
                                                 class="border  bg-green-600  hover:bg-green-400  rounded-md m-2 flex justify-center">
                                                 <a class=" py-2 px-4"
-                                                    href="{{ route('brand.edit', $brand->id) }}">Edit</a>
+                                                    href="{{ route('product.edit', $product->id) }}">Edit</a>
                                             </div>
                                             @csrf
                                             @method('DELETE')

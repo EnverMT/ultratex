@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with(['brand', 'pictures'])->get();
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -21,7 +23,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('product.create', compact('brands', 'categories'));
     }
 
     /**
@@ -29,7 +33,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ['title', 'kod', 'model', 'description', 'details', 'price', 'quantity', 'brand_id'];
+        $request->validate([
+            'title' => 'required|string',
+            'kod' => 'required|string',
+            'model' => 'required|string',
+            'description' => 'string',
+            'details' => 'string',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'brand_id' => 'required|numeric'
+        ]);
+        Product::create($request->all());
+
+        return redirect()->route('product.index')->with('success', 'product created');
     }
 
     /**
@@ -37,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return view('product.show', compact('product'));
     }
 
     /**

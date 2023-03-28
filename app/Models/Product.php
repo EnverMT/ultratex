@@ -12,11 +12,11 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'products';
-    protected $guarded = false;
+    protected $guarded = ['title', 'kod', 'model', 'description', 'details', 'price', 'quantity', 'brand_id'];
 
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
     public function pictures(): HasMany

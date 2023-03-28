@@ -19,12 +19,15 @@
 
                     <div class="m-4">
                         <label for="title">Title:</label>
-                        <input type="text" name="title" id="title" value={{ $brand->title }}>
+                        <input type="text" name="title" id="title" value={{ $brand->title }}
+                            class="dark:bg-slate-800">
                     </div>
+
+                    
 
                     <div class="m-4">
                         <label for="category_id">parent category:</label>
-                        <select name="category_id" id="category_id">
+                        <select name="category_id" id="category_id" class="dark:bg-slate-800">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
                                     @if ($brand->category->id == $category->id) selected = 'selected' @endif>

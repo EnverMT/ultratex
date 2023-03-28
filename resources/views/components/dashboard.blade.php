@@ -25,7 +25,7 @@
 
     @include('components.header')
 
-    <main class="mb-auto">
+    <main class="mb-auto dark:text-white">
         <div class="flex max-w-screen-xl mx-auto">
             <div>
                 @include('components.dashboard.navigation')

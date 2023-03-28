@@ -60,7 +60,7 @@
                                     <img src="{{ asset('assets/img/product01.png') }}" alt="">
                                     <div class="flex flex-col items-center">
                                         <span
-                                            class="uppercase text-gray-400 text-sm">{{ $product->category->title }}</span>
+                                            class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>
                                         <span class="uppercase font-semibold">{{ $product->title }}</span>
                                         <span class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
                                             сум</span>
