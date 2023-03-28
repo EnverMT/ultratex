@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
@@ -34,5 +35,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('category', CategoryController::class);
 Route::resource('product', ProductController::class);
+Route::resource('brand', BrandController::class);
 
 require __DIR__ . '/auth.php';
