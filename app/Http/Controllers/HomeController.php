@@ -18,8 +18,8 @@ class HomeController extends Controller
             $query->where('category_id', $data['category_id']);
         }
 
-        $categories = Category::all();
-        $products = Product::all();
+        $categories = Category::get();
+        $products = Product::with(['pictures', 'brand'])->get();
 
         return view('home', compact(['categories', 'products']));
     }
