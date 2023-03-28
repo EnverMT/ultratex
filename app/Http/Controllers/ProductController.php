@@ -53,7 +53,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $brands = Brand::all();
+        return view('product.edit', compact('product', 'brands'));
     }
 
     /**
@@ -61,7 +62,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->fill($request->all())->save();
+
+        return redirect()->route('product.index')->with('success', 'product created');
     }
 
     /**
@@ -69,6 +72,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index')->with('success', 'product deleted');
     }
 }

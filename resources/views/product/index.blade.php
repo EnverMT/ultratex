@@ -26,6 +26,9 @@
                                     Title
                                 </th>
                                 <th scope="col" class=" px-6 py-4 text-left">
+                                    Price
+                                </th>
+                                <th scope="col" class=" px-6 py-4 text-left">
                                     Pictures
                                 </th>
                                 <th scope="col" class=" px-6 py-4 text-left">
@@ -50,6 +53,9 @@
                                     </td>
                                     <td class="   px-6 py-4 whitespace-nowrap">
                                         {{ $product->title }}
+                                    </td>
+                                    <td class="   px-6 py-4 whitespace-nowrap">
+                                        {{ $product->price }}
                                     </td>
                                     <td class="   px-6 py-4 whitespace-nowrap">
                                         <div class="flex flex-wrap">
