@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Category::factory(3)
-            ->create()
-            ->each(function ($category) {
-                Product::factory(4)
-                    ->create(['category_id' => $category->id]);
-            });
+        // Category::factory(3)
+        //     ->create()
+        //     ->each(function ($category) {
+        //         Product::factory(4)
+        //             ->create(['category_id' => $category->id]);
+        //     });
     }
 }
