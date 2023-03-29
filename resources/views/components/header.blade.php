@@ -8,9 +8,11 @@
                     <div class="text-2xl"><i class="fa-brands fa-google text-red-500"></i></div>
                 </a>
                 <ul class="flex-row lg:flex justify-between flex-wrap">
-                    <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-phone text-red-700"></i>
+                    <li class="hover:text-red-500 mx-4"><a href="tel:+998977365885"><i
+                                class="fa fa-phone text-red-700"></i>
                             +998 97 736 58 85</a></li>
-                    <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-map-marker text-red-700">
+                    <li class="hover:text-red-500 mx-4"><a href="https://goo.gl/maps/dR44ooM6KM863zAy6"
+                            target="_blank"><i class="fa fa-map-marker text-red-700">
                             </i> Бекабад, ул.Аббасова, UltraTex </a></li>
                     <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31" target="_blank">
                             <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
