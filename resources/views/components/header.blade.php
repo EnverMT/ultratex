@@ -18,20 +18,22 @@
             </div>
 
             <div class="flex items-center">
-                <div class="p-1 sm:hidden mx-3">
+                {{-- <div class="p-1 sm:hidden mx-3 dropdown">
                     <i class="fa-solid fa-bars"></i>
-                </div>
+                </div> --}}
+
+                <select class="changeLang bg-gray-800 text-sm border-0">
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>Eng</option>
+                    <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>Рус</option>
+                    <option value="uz" {{ session()->get('locale') == 'uz' ? 'selected' : '' }}>Узб</option>
+                </select>
 
 
-                <div class="hidden sm:flex items-center gap-5 flex-wrap">
-                    <select class="changeLang bg-gray-800 text-sm border-0">
-                        <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>Eng</option>
-                        <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>Рус</option>
-                        <option value="uz" {{ session()->get('locale') == 'uz' ? 'selected' : '' }}>Узб</option>
-                    </select>
+                <div class="flex-col sm:flex sm:flex-row items-center gap-5 flex-wrap">
 
-                    @auth
-                        <ul class="flex gap-3 items-center">
+
+                    <ul class="flex flex-col sm:flex-row gap-3 items-center dropdown-content">
+                        @auth
                             @if (Auth::user()->is_admin == 1)
                                 <li><a href="{{ route('dashboard') }}"><i class="fa fa-columns"></i>@lang('header.dashboard')</a>
                                 </li>
@@ -49,16 +51,13 @@
                                             class="fa fa-sign-out"></i>@lang('header.logout')</a>
                                 </form>
                             </li>
-                        </ul>
-                    @else
-                        <ul class="flex gap-3 items-center">
+                        @else
                             <li class="hover:text-red-500"><a href="{{ route('login') }}"><i
                                         class=""></i>@lang('header.login')</a></li>
                             <li class="hover:text-red-500"><a href="{{ route('register') }}"><i
                                         class=""></i>@lang('header.register')</a></li>
-                        </ul>
-
-                    @endauth
+                        @endauth
+                    </ul>
                 </div>
             </div>
 
