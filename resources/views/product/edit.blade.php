@@ -45,14 +45,12 @@
 
                     <div class="m-4 flex flex-col">
                         <label for="description">Description:</label>
-                        <textarea name="description" id="description" cols="80" rows="5" class="dark:bg-slate-800"
-                            value={{ $product->description }}></textarea>
+                        <textarea name="description" id="description" cols="80" rows="5" class="dark:bg-slate-800">{{ $product->description }}</textarea>
                     </div>
 
                     <div class="m-4 flex flex-col">
                         <label for="details">Details:</label>
-                        <textarea name="details" id="details" cols="80" rows="5" class="dark:bg-slate-800"
-                            value={{ $product->details }}></textarea>
+                        <textarea name="details" id="details" cols="80" rows="5" class="dark:bg-slate-800">{{ $product->details }}</textarea>
                     </div>
 
                     {{-- Images --}}
