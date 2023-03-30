@@ -54,7 +54,7 @@
 
         {{-- details --}}
         <div class=" flex flex-col items-center m-5">
-            <div class=" w-3/4  dark:bg-slate-700">
+            <div class=" w-3/4  dark:bg-slate-700 text-justify">
                 {{ $product->details }}</div>
         </div>
 
