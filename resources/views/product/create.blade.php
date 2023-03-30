@@ -51,7 +51,8 @@
                         <label for="brand_id">Brand:</label>
                         <select name="brand_id" id="brand_id" class="dark:bg-slate-800">
                             @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                                <option value="{{ $brand->id }}">{{ $brand->category->title }} - {{ $brand->title }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

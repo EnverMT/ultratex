@@ -64,7 +64,8 @@
                         <select name="brand_id" id="brand_id" class="dark:bg-slate-800">
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->id }}"
-                                    @if ($brand->id == $product->brand->id) selected = 'selected' @endif>{{ $brand->title }}
+                                    @if ($brand->id == $product->brand->id) selected = 'selected' @endif>
+                                    {{ $brand->category->title }} - {{ $brand->title }}
                                 </option>
                             @endforeach
                         </select>
