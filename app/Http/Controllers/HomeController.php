@@ -12,10 +12,16 @@ class HomeController extends Controller
     {
         $data = $request->validated();
 
+
+
         $query = Product::query()->with('category');
 
         if (isset($data['category_id'])) {
             $query->where('category_id', $data['category_id']);
+        }
+
+        if (isset($data['sub_category_id'])) {
+            $query->where('category_id', $data['sub_category_id']);
         }
 
         $categories = Category::get();

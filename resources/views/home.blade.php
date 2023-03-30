@@ -4,39 +4,32 @@
             {{-- Categories --}}
             <div class="flex flex-col">
                 <div class="flex flex-col">
-                    <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Категории:</h3>
-                    <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
-                        @foreach ($categories as $category)
-                            @if ($category->isMain)
-                                <li class="w-full p-2">
-                                    <div class="flex items-center pl-3">
-                                        <input type="radio" name="category" id="category_id_{{ $category->id }}">
-                                        <label for="category_id_{{ $category->id }}"
-                                            class="pl-2">{{ $category->title }}</label>
-                                    </div>
-                                </li>
-                            @endif
-                        @endforeach
-                    </ul>
+                    <h3 class="mb-4 mt-6 font-semibold dark:text-white m-3">Категории:</h3>
+                    @foreach ($categories as $category)
+                        @if ($category->isMain)
+                            <a href={{ route('home', ['category_id' => $category->id]) }}
+                                class=" dark:text-white hover:underline">{{ $category->title }}</a>
+                        @endif
+                    @endforeach
+
                 </div>
 
-                <div class="flex flex-col">
-                    <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Субкатегории:</h3>
-                    <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
-                        @foreach ($categories as $category)
-                            @if (!$category->isMain && $category->parent->id == Request::get('category_id'))
-                                <li class="w-full p-2">
-                                    <div class="flex items-center pl-3">
-                                        <input type="radio" name="subcategory"
-                                            id="subcategory_id_{{ $category->id }}">
-                                        <label for="subcategory_id_{{ $category->id }}"
-                                            class="pl-2">{{ $category->title }}</label>
-                                    </div>
-                                </li>
+                @if (Request::get('category_id'))
+                    <div class="flex flex-col">
+                        <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Субкатегории:</h3>
+
+                        @foreach ($categories as $subCategory)
+                            @if (!$subCategory->isMain && $subCategory->parent->id == Request::get('category_id'))
+                                <a href={{ route('home', ['category_id' => Request::get('category_id'), 'sub_category_id' => $subCategory->id]) }}
+                                    class=" dark:text-white hover:underline">{{ $subCategory->title }}</a>
                             @endif
                         @endforeach
-                    </ul>
-                </div>
+
+                    </div>
+
+                @endif
+
+
             </div>
 
             <div class="flex flex-col">
@@ -81,8 +74,7 @@
                                         <span
                                             class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>
                                         <span class="uppercase font-semibold">{{ $product->title }}</span>
-                                        <span
-                                            class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
+                                        <span class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
                                             сум</span>
                                     </div>
                                 </div>
