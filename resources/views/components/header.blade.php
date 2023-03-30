@@ -8,9 +8,11 @@
                     <div class="text-2xl"><i class="fa-brands fa-google text-red-500"></i></div>
                 </a>
                 <ul class="flex-row lg:flex justify-between flex-wrap">
-                    <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-phone text-red-700"></i>
+                    <li class="hover:text-red-500 mx-4"><a href="tel:+998977365885"><i
+                                class="fa fa-phone text-red-700"></i>
                             +998 97 736 58 85</a></li>
-                    <li class="hover:text-red-500 mx-4"><a href="#"><i class="fa fa-map-marker text-red-700">
+                    <li class="hover:text-red-500 mx-4"><a href="https://goo.gl/maps/dR44ooM6KM863zAy6"
+                            target="_blank"><i class="fa fa-map-marker text-red-700">
                             </i> Бекабад, ул.Аббасова, UltraTex </a></li>
                     <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31" target="_blank">
                             <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
@@ -18,20 +20,22 @@
             </div>
 
             <div class="flex items-center">
-                <div class="p-1 sm:hidden mx-3">
+                {{-- <div class="p-1 sm:hidden mx-3 dropdown">
                     <i class="fa-solid fa-bars"></i>
-                </div>
+                </div> --}}
+
+                <select class="changeLang bg-gray-800 text-sm border-0">
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>Eng</option>
+                    <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>Рус</option>
+                    <option value="uz" {{ session()->get('locale') == 'uz' ? 'selected' : '' }}>Узб</option>
+                </select>
 
 
-                <div class="hidden sm:flex items-center gap-5 flex-wrap">
-                    <select class="changeLang bg-gray-800 text-sm border-0">
-                        <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>Eng</option>
-                        <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>Рус</option>
-                        <option value="uz" {{ session()->get('locale') == 'uz' ? 'selected' : '' }}>Узб</option>
-                    </select>
+                <div class="flex-col sm:flex sm:flex-row items-center gap-5 flex-wrap">
 
-                    @auth
-                        <ul class="flex gap-3 items-center">
+
+                    <ul class="flex flex-col sm:flex-row gap-3 items-center dropdown-content">
+                        @auth
                             @if (Auth::user()->is_admin == 1)
                                 <li><a href="{{ route('dashboard') }}"><i class="fa fa-columns"></i>@lang('header.dashboard')</a>
                                 </li>
@@ -49,16 +53,13 @@
                                             class="fa fa-sign-out"></i>@lang('header.logout')</a>
                                 </form>
                             </li>
-                        </ul>
-                    @else
-                        <ul class="flex gap-3 items-center">
+                        @else
                             <li class="hover:text-red-500"><a href="{{ route('login') }}"><i
                                         class=""></i>@lang('header.login')</a></li>
                             <li class="hover:text-red-500"><a href="{{ route('register') }}"><i
                                         class=""></i>@lang('header.register')</a></li>
-                        </ul>
-
-                    @endauth
+                        @endauth
+                    </ul>
                 </div>
             </div>
 

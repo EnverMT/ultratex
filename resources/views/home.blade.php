@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="">
-        <div class=" mx-auto max-w-screen-2xl lg:flex">
+    <div class="mx-auto max-w-screen-xl">
+        <div class="lg:flex">
             {{-- Categories --}}
             <div class="flex flex-col">
                 <div class="flex flex-col">
@@ -8,13 +8,29 @@
                     <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
                         @foreach ($categories as $category)
                             @if ($category->isMain)
-                                <li class="w-full">
+                                <li class="w-full p-2">
                                     <div class="flex items-center pl-3">
-                                        <input id="category-{{ $category->id }}" name="category" type="checkbox"
-                                            value="{{ $category->id }}"
-                                            class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="category-{{ $category->id }}"
-                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $category->title }}</label>
+                                        <input type="radio" name="category" id="category_id_{{ $category->id }}">
+                                        <label for="category_id_{{ $category->id }}"
+                                            class="pl-2">{{ $category->title }}</label>
+                                    </div>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="flex flex-col">
+                    <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Субкатегории:</h3>
+                    <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
+                        @foreach ($categories as $category)
+                            @if (!$category->isMain && $category->parent->id == Request::get('category_id'))
+                                <li class="w-full p-2">
+                                    <div class="flex items-center pl-3">
+                                        <input type="radio" name="subcategory"
+                                            id="subcategory_id_{{ $category->id }}">
+                                        <label for="subcategory_id_{{ $category->id }}"
+                                            class="pl-2">{{ $category->title }}</label>
                                     </div>
                                 </li>
                             @endif
@@ -24,14 +40,15 @@
             </div>
 
             <div class="flex flex-col">
+
                 {{-- Filters --}}
                 <div class="flex m-5 dark:text-white">
                     <label for="sortby">
                         Sort by:
                         <select name="sortby" id="" class="dark:bg-slate-600">
                             <option value="popular">Newest</option>
-                            <option value="popular">Expensive first</option>
-                            <option value="popular">Cheapest first</option>
+                            <option value="expansive">Expensive first</option>
+                            <option value="cheapest">Cheapest first</option>
                         </select>
                     </label>
 
@@ -67,7 +84,8 @@
                                         <span
                                             class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>
                                         <span class="uppercase font-semibold">{{ $product->title }}</span>
-                                        <span class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
+                                        <span
+                                            class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
                                             сум</span>
                                     </div>
                                 </div>
