@@ -19,7 +19,7 @@ class HomeController extends Controller
         }
 
         $categories = Category::get();
-        $products = Product::with(['pictures', 'brand'])->paginate(2);
+        $products = Product::with(['pictures', 'brand'])->paginate($request->perPage ?? 20);
 
 
         return view('home', compact(['categories', 'products']));

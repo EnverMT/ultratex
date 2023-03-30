@@ -42,7 +42,7 @@
             <div class="flex flex-col">
 
                 {{-- Filters --}}
-                <div class="flex m-5 dark:text-white">
+                {{-- <div class="flex m-5 dark:text-white">
                     <label for="sortby">
                         Sort by:
                         <select name="sortby" id="" class="dark:bg-slate-600">
@@ -52,19 +52,16 @@
                         </select>
                     </label>
 
-                    <label for="showedItems" class="ml-5">
+                    <label for="perPage" class="ml-5">
                         Show:
-                        <select name="showedItems" id="showedItems" class="dark:bg-slate-600">
+                        <select name="perPage" id="perPage" class="dark:bg-slate-600">
                             <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="40">40</option>
                             <option value="50">50</option>
                         </select>
                     </label>
-
-
-                </div>
-
+                </div> --}}
 
                 {{-- Products --}}
                 {{-- <div class="dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"> --}}
@@ -97,11 +94,6 @@
                 <div class=" mx-auto my-5">
                     {{ $products->links() }}
                 </div>
-
-
-
-
-
 
             </div>
         </div>
