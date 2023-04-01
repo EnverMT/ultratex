@@ -29,8 +29,9 @@
                     </li>
                     <li class="p-2 {{ session()->get('locale') == 'ru' ? 'bg-green-800 rounded-md' : '' }}"><a
                             href={{ route('changeLang', ['lang' => 'ru']) }}>Ru</a></li>
-                    <li class="p-2 {{ session()->get('locale') == 'uz' ? 'bg-green-800 rounded-md' : '' }}"><a
-                            href={{ route('changeLang', ['lang' => 'uz']) }}>Uz</a></li>
+                    <li
+                        class="p-2  {{ session()->get('locale') == '' ? 'bg-green-800 rounded-md' : '' }} {{ session()->get('locale') == 'uz' ? 'bg-green-800 rounded-md' : '' }}">
+                        <a href={{ route('changeLang', ['lang' => 'uz']) }}>Uz</a></li>
                 </ul>
 
 
