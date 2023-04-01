@@ -9,26 +9,29 @@
                 </a>
                 <ul class="flex-row lg:flex justify-between flex-wrap">
                     <li class="hover:text-red-500 mx-4"><a href="tel:+998977365885"><i
-                                class="fa fa-phone text-red-700"></i>
+                                class="fa fa-phone text-green-700"></i>
                             +998 97 736 58 85</a></li>
                     <li class="hover:text-red-500 mx-4"><a href="https://goo.gl/maps/dR44ooM6KM863zAy6"
-                            target="_blank"><i class="fa fa-map-marker text-red-700">
+                            target="_blank"><i class="fa fa-map-marker text-blue-500">
                             </i> Бекабад, ул.Аббасова, UltraTex </a></li>
                     <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31" target="_blank">
-                            <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
+                            <i class="fa-brands fa-telegram text-blue-300"></i> ultra_tex</a></li>
                 </ul>
             </div>
 
             <div class="flex items-center">
-                {{-- <div class="p-1 sm:hidden mx-3 dropdown">
-                    <i class="fa-solid fa-bars"></i>
-                </div> --}}
 
-                <select class="changeLang bg-gray-800 text-sm border-0">
-                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>Eng</option>
-                    <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>Рус</option>
-                    <option value="uz" {{ session()->get('locale') == 'uz' ? 'selected' : '' }}>Узб</option>
-                </select>
+
+                <ul class="p-2 flex">
+
+                    <li class="p-2  {{ session()->get('locale') == 'en' ? 'bg-green-800 rounded-md' : '' }} "><a
+                            href={{ route('changeLang', ['lang' => 'en']) }}>En</a>
+                    </li>
+                    <li class="p-2 {{ session()->get('locale') == 'ru' ? 'bg-green-800 rounded-md' : '' }}"><a
+                            href={{ route('changeLang', ['lang' => 'ru']) }}>Ru</a></li>
+                    <li class="p-2 {{ session()->get('locale') == 'uz' ? 'bg-green-800 rounded-md' : '' }}"><a
+                            href={{ route('changeLang', ['lang' => 'uz']) }}>Uz</a></li>
+                </ul>
 
 
                 <div class="flex-col sm:flex sm:flex-row items-center gap-5 flex-wrap">
@@ -65,11 +68,4 @@
 
         </div>
     </div>
-    <!-- /TOP HEADER -->
-    <script type="text/javascript">
-        var url = "{{ route('changeLang') }}";
-        document.querySelector('.changeLang').addEventListener('change', (e) => {
-            window.location.href = url + "?lang=" + e.target.value;
-        })
-    </script>
 </header>

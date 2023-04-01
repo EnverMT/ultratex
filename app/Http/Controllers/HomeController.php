@@ -12,8 +12,6 @@ class HomeController extends Controller
     {
         $data = $request->validated();
 
-
-
         $query = Product::query()->with('category');
 
         if (isset($data['category_id'])) {
