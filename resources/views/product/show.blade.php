@@ -32,17 +32,43 @@
 
                     <table class="mt-2">
                         <tbody>
-                            @for ($i = 1; $i <= 4; $i++)
-                                <tr>
-                                    <td class="">
-                                        <span class=" text-red-500"> {{ $i * 3 }}</span>
-                                        <span class=" pr-4"> месяц</span>
-                                    </td>
-                                    <td class=" "> <span
-                                            class="text-red-500">{{ round($product->price / ($i * 3)) }}</span>
-                                        сум/месяц</td>
-                                </tr>
-                            @endfor
+                            <tr>
+                                <td class="">
+                                    <span class="text-red-500">3</span>
+                                    <span class="pr-6"> месяца</span>
+                                </td>
+                                <td class=" "> <span
+                                        class="text-red-500">{{ round($product->price / (1 * 3)) }}</span>
+                                    сум/месяц</td>
+                            </tr>
+                            <tr>
+                                <td class="">
+                                    <span class="text-red-500">6</span>
+                                    <span class="pr-6"> месяцев</span>
+                                </td>
+                                <td class=" "> <span
+                                        class="text-red-500">{{ round($product->price / (2 * 3)) }}</span>
+                                    сум/месяц</td>
+                            </tr>
+                            <tr>
+                                <td class="">
+                                    <span class="text-red-500">9</span>
+                                    <span class="pr-6"> месяцев</span>
+                                </td>
+                                <td class=" "> <span
+                                        class="text-red-500">{{ round($product->price / (3 * 3)) }}</span>
+                                    сум/месяц</td>
+                            </tr>
+                            <tr>
+                                <td class="">
+                                    <span class="text-red-500">12</span>
+                                    <span class="pr-6"> месяцев</span>
+                                </td>
+                                <td class=" "> <span
+                                        class="text-red-500">{{ round($product->price / (4 * 3)) }}</span>
+                                    сум/месяц</td>
+                            </tr>
+
                         </tbody>
                     </table>
 

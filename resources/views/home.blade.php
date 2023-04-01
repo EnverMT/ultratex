@@ -3,31 +3,32 @@
         <div class="lg:flex">
             {{-- Categories --}}
             <div class="flex flex-col">
-                <div class="flex flex-col">
-                    <h3 class="mb-4 mt-6 font-semibold dark:text-white m-3">Категории:</h3>
+                <div class="flex flex-col p-2 font-semibold">
                     @foreach ($categories as $category)
                         @if ($category->isMain)
                             <a href={{ route('home', ['category_id' => $category->id]) }}
                                 class=" dark:text-white hover:underline">{{ $category->title }}</a>
+                            @if (Request::get('category_id'))
+                                <div class="flex flex-col">
+
+                                    @foreach ($categories as $subCategory)
+                                        @if (
+                                            !$subCategory->isMain &&
+                                                $subCategory->parent->id == Request::get('category_id') &&
+                                                $subCategory->parent->id == $category->id)
+                                            <a href={{ route('home', ['category_id' => Request::get('category_id'), 'sub_category_id' => $subCategory->id]) }}
+                                                class=" dark:text-white hover:underline pl-4">{{ $subCategory->title }}</a>
+                                        @endif
+                                    @endforeach
+
+                                </div>
+                            @endif
                         @endif
                     @endforeach
 
                 </div>
 
-                @if (Request::get('category_id'))
-                    <div class="flex flex-col">
-                        <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Субкатегории:</h3>
 
-                        @foreach ($categories as $subCategory)
-                            @if (!$subCategory->isMain && $subCategory->parent->id == Request::get('category_id'))
-                                <a href={{ route('home', ['category_id' => Request::get('category_id'), 'sub_category_id' => $subCategory->id]) }}
-                                    class=" dark:text-white hover:underline">{{ $subCategory->title }}</a>
-                            @endif
-                        @endforeach
-
-                    </div>
-
-                @endif
 
 
             </div>
@@ -74,8 +75,11 @@
                                         <span
                                             class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>
                                         <span class="uppercase font-semibold">{{ $product->title }}</span>
-                                        <span class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
-                                            сум</span>
+                                        <span class="font-semibold ">
+                                            <span class="dark:text-red-400 text-red-500">{{ $product->price }}</span>
+                                            <span>сум</span>
+
+                                        </span>
                                     </div>
                                 </div>
                             </div>
