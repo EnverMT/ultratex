@@ -2,7 +2,8 @@
     <div class="mx-auto max-w-screen-2xl dark:text-white">
         {{-- Category / Subcategory / Product name --}}
         <div>
-            <a href={{ route('home') }}>Home</a> / {{ $product->brand->category->title }} / {{ $product->brand->title }}
+            <a href={{ route('home') }}>Home</a> / {{ $product->brand->category->title }}
+            / {{ $product->brand->title }}
         </div>
 
         {{-- main content --}}
@@ -20,7 +21,7 @@
                 {{-- details --}}
                 <div class="flex flex-col items-center">
                     <div class="uppercase font-bold text-xl">{{ $product->title }}</div>
-                    <div class=" text-red-700 font-bold text-2xl">{{ $product->price }} сум</div>
+                    <div class="  font-bold text-2xl"><span class="text-red-700">{{ $product->price }}</span> сум</div>
 
 
                     <span class=" mt-10 uppercase">
@@ -33,8 +34,11 @@
                         <tbody>
                             @for ($i = 1; $i <= 4; $i++)
                                 <tr>
-                                    <td class="p-4">{{ $i * 3 }} месяцев рассрочки</td>
-                                    <td class="p-4 "> <span
+                                    <td class="">
+                                        <span class=" text-red-500"> {{ $i * 3 }}</span>
+                                        <span class=" pr-4"> месяц</span>
+                                    </td>
+                                    <td class=" "> <span
                                             class="text-red-500">{{ round($product->price / ($i * 3)) }}</span>
                                         сум/месяц</td>
                                 </tr>
