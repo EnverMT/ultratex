@@ -105,4 +105,12 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index')->with('success', 'product deleted');
     }
+
+    public function google()
+    {
+        $products = Product::with(['brand', 'pictures'])->get();
+        $categories = Category::get();
+
+        return compact('products', 'categories');
+    }
 }
