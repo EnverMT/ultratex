@@ -76,7 +76,8 @@
                                             class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>
                                         <span class="uppercase font-semibold">{{ $product->title }}</span>
                                         <span class="font-semibold ">
-                                            <span class="dark:text-red-400 text-red-500">{{ $product->price }}</span>
+                                            <span
+                                                class="dark:text-red-400 text-red-500">{{ number_format($product->price, 0, ',', ' ') }}</span>
                                             <span>сум</span>
 
                                         </span>

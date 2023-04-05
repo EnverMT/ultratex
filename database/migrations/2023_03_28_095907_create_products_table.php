@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kod');
             $table->text('description')->nullable();
             $table->text('details')->nullable();
-            $table->float('price');
+            $table->float('price', 20, 2);
             $table->integer('quantity')->nullable();
             $table->foreignId('brand_id')->constrained('brands')->onUpdate('cascade')->restrictOnDelete();
             $table->timestamps();
