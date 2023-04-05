@@ -49,7 +49,7 @@
                                         {{ $product->model }}
                                     </td>
                                     <td class="   px-6 py-4 whitespace-nowrap">
-                                        {{ $product->kod }}
+                                        {{ $product->id }}
                                     </td>
                                     <td class="   px-6 py-4 whitespace-nowrap">
                                         {{ $product->title }}

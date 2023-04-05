@@ -24,13 +24,7 @@
                         <input type="text" name="model" id="model" class="dark:bg-slate-800"
                             value={{ $product->model }}>
                     </div>
-
-                    <div class="m-4 flex flex-col">
-                        <label for="kod">Kod:</label>
-                        <input type="text" name="kod" id="kod" class="dark:bg-slate-800"
-                            value={{ $product->kod }}>
-                    </div>
-
+                    
                     <div class="m-4 flex flex-col">
                         <label for="title">Title:</label>
                         <input type="text" name="title" id="title" class="dark:bg-slate-800"
