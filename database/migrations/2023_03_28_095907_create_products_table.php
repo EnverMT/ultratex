@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('model');
             $table->string('title');
+            $table->string('kod');
             $table->text('description')->nullable();
             $table->text('details')->nullable();
             $table->float('price');
