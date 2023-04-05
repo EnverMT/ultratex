@@ -25,7 +25,9 @@
                         <label for="category_id">parent category:</label>
                         <select name="category_id" id="category_id" class="dark:bg-slate-800">
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @if (!$category->isMain)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>

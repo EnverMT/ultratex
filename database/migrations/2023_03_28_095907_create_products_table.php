@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('model');
             $table->string('kod');
             $table->string('title');
-            $table->string('description')->nullable();
-            $table->string('details')->nullable();
+            $table->text('description')->nullable();
+            $table->text('details')->nullable();
             $table->float('price');
             $table->integer('quantity')->nullable();
             $table->foreignId('brand_id')->constrained('brands')->onUpdate('cascade')->restrictOnDelete();

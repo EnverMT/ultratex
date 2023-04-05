@@ -3,46 +3,40 @@
         <div class="lg:flex">
             {{-- Categories --}}
             <div class="flex flex-col">
-                <div class="flex flex-col">
-                    <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Категории:</h3>
-                    <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
-                        @foreach ($categories as $category)
-                            @if ($category->isMain)
-                                <li class="w-full p-2">
-                                    <div class="flex items-center pl-3">
-                                        <input type="radio" name="category" id="category_id_{{ $category->id }}">
-                                        <label for="category_id_{{ $category->id }}"
-                                            class="pl-2">{{ $category->title }}</label>
-                                    </div>
-                                </li>
+                <div class="flex flex-col p-2 font-semibold">
+                    @foreach ($categories as $category)
+                        @if ($category->isMain)
+                            <a href={{ route('home', ['category_id' => $category->id]) }}
+                                class=" dark:text-white hover:underline">{{ $category->title }}</a>
+                            @if (Request::get('category_id'))
+                                <div class="flex flex-col">
+
+                                    @foreach ($categories as $subCategory)
+                                        @if (
+                                            !$subCategory->isMain &&
+                                                $subCategory->parent->id == Request::get('category_id') &&
+                                                $subCategory->parent->id == $category->id)
+                                            <a href={{ route('home', ['category_id' => Request::get('category_id'), 'sub_category_id' => $subCategory->id]) }}
+                                                class=" dark:text-white hover:underline pl-4">{{ $subCategory->title }}</a>
+                                        @endif
+                                    @endforeach
+
+                                </div>
                             @endif
-                        @endforeach
-                    </ul>
+                        @endif
+                    @endforeach
+
                 </div>
 
-                <div class="flex flex-col">
-                    <h3 class="mb-4 mt-6 font-semibold text-gray-900 dark:text-white m-3">Субкатегории:</h3>
-                    <ul class="w-48 text-sm font-medium text-gray-900  dark:text-white">
-                        @foreach ($categories as $category)
-                            @if (!$category->isMain && $category->parent->id == Request::get('category_id'))
-                                <li class="w-full p-2">
-                                    <div class="flex items-center pl-3">
-                                        <input type="radio" name="subcategory"
-                                            id="subcategory_id_{{ $category->id }}">
-                                        <label for="subcategory_id_{{ $category->id }}"
-                                            class="pl-2">{{ $category->title }}</label>
-                                    </div>
-                                </li>
-                            @endif
-                        @endforeach
-                    </ul>
-                </div>
+
+
+
             </div>
 
             <div class="flex flex-col">
 
                 {{-- Filters --}}
-                <div class="flex m-5 dark:text-white">
+                {{-- <div class="flex m-5 dark:text-white">
                     <label for="sortby">
                         Sort by:
                         <select name="sortby" id="" class="dark:bg-slate-600">
@@ -52,19 +46,16 @@
                         </select>
                     </label>
 
-                    <label for="showedItems" class="ml-5">
+                    <label for="perPage" class="ml-5">
                         Show:
-                        <select name="showedItems" id="showedItems" class="dark:bg-slate-600">
+                        <select name="perPage" id="perPage" class="dark:bg-slate-600">
                             <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="40">40</option>
                             <option value="50">50</option>
                         </select>
                     </label>
-
-
-                </div>
-
+                </div> --}}
 
                 {{-- Products --}}
                 {{-- <div class="dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"> --}}
@@ -84,9 +75,11 @@
                                         <span
                                             class="uppercase text-gray-400 text-sm">{{ $product->brand->title }}</span>
                                         <span class="uppercase font-semibold">{{ $product->title }}</span>
-                                        <span
-                                            class="font-semibold dark:text-red-400 text-red-500">{{ $product->price }}
-                                            сум</span>
+                                        <span class="font-semibold ">
+                                            <span class="dark:text-red-400 text-red-500">{{ $product->price }}</span>
+                                            <span>сум</span>
+
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -94,41 +87,9 @@
                     @endforeach
                 </div>
 
-
-
                 <div class=" mx-auto my-5">
-                    <ul class="inline-flex -space-x-px">
-                        <li>
-                            <a href="#"
-                                class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                        </li>
-                        <li>
-                            <a href="#" aria-current="page"
-                                class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                        </li>
-                    </ul>
+                    {{ $products->links() }}
                 </div>
-
 
             </div>
         </div>
