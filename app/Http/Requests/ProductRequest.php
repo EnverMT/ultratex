@@ -23,7 +23,6 @@ class ProductRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'kod' => 'required|string',
             'model' => 'required|string',
             'description' => 'string',
             'details' => 'string',
