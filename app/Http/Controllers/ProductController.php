@@ -108,7 +108,7 @@ class ProductController extends Controller
 
     public function google()
     {
-        $products = Product::with(['brand', 'brand.category'])->get();
+        $products = Product::with(['brand', 'brand.category', 'brand.category.parent'])->get();
 
         return compact('products');
     }
