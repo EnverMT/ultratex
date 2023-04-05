@@ -22,25 +22,25 @@
                     <div class="m-4 flex flex-col">
                         <label for="model">Model:</label>
                         <input type="text" name="model" id="model" class="dark:bg-slate-800"
-                            value={{ $product->model }}>
+                            value="{{ $product->model }}">
                     </div>
 
                     <div class="m-4 flex flex-col">
                         <label for="kod">Kod:</label>
                         <input type="text" name="kod" id="kod" class="dark:bg-slate-800"
-                            value={{ $product->kod }}>
+                            value="{{ $product->kod }}">
                     </div>
 
                     <div class="m-4 flex flex-col">
                         <label for="title">Title:</label>
                         <input type="text" name="title" id="title" class="dark:bg-slate-800"
-                            value={{ $product->title }}>
+                            value="{{ $product->title }}">
                     </div>
 
                     <div class="m-4 flex flex-col">
                         <label for="price">Price:</label>
                         <input type="number" name="price" id="price" class="dark:bg-slate-800"
-                            value={{ $product->price }}>
+                            value="{{ $product->price }}">
                     </div>
 
                     <div class="m-4 flex flex-col">
