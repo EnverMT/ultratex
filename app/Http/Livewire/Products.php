@@ -8,36 +8,31 @@ use Livewire\Component;
 
 class Products extends Component
 {
+    public $selectedCategory = null;
+    public $selectedSubCategory = null;
+
     public $categories;
     public $subcategories;
-    public $products;
 
     public function mount()
     {
         $this->categories = Category::where('isMain', true)->get();
         $this->subcategories = Category::where('isMain', false)->get();
-        $this->products = Product::get();
     }
 
-    public function filterCategory(int $categoryId = null, int $subcategoryID = null)
+    public function selectCategory(int $selectedCategory = null)
     {
-        if ($categoryId == null && $subcategoryID == null) {
-            return;
-        }
-
-        if ($subcategoryID == null) {
-            $this->products = Product::with(['pictures', 'brand', 'brand.category', 'brand.category.parent'])
-                ->whereRelation('brand.category.parent', 'id', '=', $categoryId)
-                ->get();
-        } else {
-            $this->products = Product::with(['pictures', 'brand', 'brand.category', 'brand.category.parent'])
-                ->whereRelation('brand.category', 'id', '=', $categoryId)
-                ->get();
-        }
+        $this->selectedCategory = $selectedCategory;
     }
 
     public function render()
     {
-        return view('livewire.products');
+        $query = Product::with(['pictures', 'brand', 'brand.category', 'brand.category.parent']);
+
+        if ($this->selectedCategory != null) {
+            $query->whereRelation('brand.category.parent', 'id', '=', $this->selectedCategory);
+        }
+
+        return view('livewire.products', ['products' => $query->paginate(8)]);
     }
 }
