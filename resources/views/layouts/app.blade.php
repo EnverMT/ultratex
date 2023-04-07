@@ -19,23 +19,17 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
-<body class="flex flex-col h-screen justify-between dark:bg-slate-700">
-
-    @include('components.header')
-
-    <!-- Navigation -->
-    {{-- @include('layouts.navigation') --}}
-
-    <!-- Page Content -->
-    <main class="mb-auto">
+<body class="flex flex-col h-screen justify-between">
+    <div>
+        @include('components.header')
         {{ $slot }}
-    </main>
-
-
+    </div>
     @include('components.footer')
-
+    @livewireScripts
 </body>
 
 </html>
