@@ -3,10 +3,7 @@
     <!-- TOP HEADER -->
     <div class=" max-w-screen-xl mx-auto">
         <div class="flex items-center justify-between flex-wrap">
-            <div class="flex items-center">
-                <a href="{{ route('home') }}">
-                    <div class="text-2xl"><i class="fa-brands fa-google text-red-500"></i></div>
-                </a>
+            <div class="flex items-center">                
                 <ul class="flex-row lg:flex justify-between flex-wrap">
                     <li class="hover:text-red-500 mx-4"><a href="tel:+998977365885"><i
                                 class="fa fa-phone text-green-700"></i>
@@ -22,15 +19,15 @@
             <div class="flex items-center">
 
 
-                <ul class="p-2 flex">
+                <ul class="flex">
 
-                    <li class="p-2  {{ session()->get('locale') == 'en' ? 'bg-green-800 rounded-md' : '' }} "><a
+                    <li class="px-2 hover:text-red-400  {{ session()->get('locale') == 'en' ? 'bg-green-800 rounded-md' : '' }} "><a
                             href={{ route('changeLang', ['lang' => 'en']) }}>En</a>
                     </li>
-                    <li class="p-2 {{ session()->get('locale') == 'ru' ? 'bg-green-800 rounded-md' : '' }}"><a
+                    <li class="px-2 hover:text-red-400 {{ session()->get('locale') == 'ru' ? 'bg-green-800 rounded-md' : '' }}"><a
                             href={{ route('changeLang', ['lang' => 'ru']) }}>Ru</a></li>
                     <li
-                        class="p-2  {{ session()->get('locale') == '' ? 'bg-green-800 rounded-md' : '' }} {{ session()->get('locale') == 'uz' ? 'bg-green-800 rounded-md' : '' }}">
+                        class="px-2 hover:text-red-400  {{ session()->get('locale') == '' ? 'bg-green-800 rounded-md' : '' }} {{ session()->get('locale') == 'uz' ? 'bg-green-800 rounded-md' : '' }}">
                         <a href={{ route('changeLang', ['lang' => 'uz']) }}>Uz</a></li>
                 </ul>
 
@@ -41,7 +38,7 @@
                     <ul class="flex flex-col sm:flex-row gap-3 items-center dropdown-content">
                         @auth
                             @if (Auth::user()->is_admin == 1)
-                                <li><a href="{{ route('dashboard') }}"><i class="fa fa-columns"></i>@lang('header.dashboard')</a>
+                                <li class="px-2 hover:text-red-400"><a href="{{ route('dashboard') }}"></i>@lang('header.dashboard')</a>
                                 </li>
                             @endif
                             <li class="hover:text-green-500"><a href="{{ route('profile.edit') }}"><i
