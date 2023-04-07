@@ -4,7 +4,7 @@
     <div class=" max-w-screen-xl mx-auto">
         <div class="flex items-center justify-between flex-wrap">
             <div class="flex items-center">                
-                <ul class="flex-row lg:flex justify-between flex-wrap">
+                <ul class="flex flex-wrap">
                     <li class="hover:text-red-500 mx-4"><a href="tel:+998977365885"><i
                                 class="fa fa-phone text-green-700"></i>
                             +998 97 736 58 85</a></li>
@@ -16,10 +16,10 @@
                 </ul>
             </div>
 
-            <div class="flex items-center">
+            <div class="flex justify-between flex-wrap">
 
 
-                <ul class="flex">
+                <ul class="flex mx-3">
 
                     <li class="px-2 hover:text-red-400  {{ session()->get('locale') == 'en' ? 'bg-green-800 rounded-md' : '' }} "><a
                             href={{ route('changeLang', ['lang' => 'en']) }}>En</a>
@@ -32,10 +32,10 @@
                 </ul>
 
 
-                <div class="flex-col sm:flex sm:flex-row items-center gap-5 flex-wrap">
+                <div class="flex items-center gap-5 flex-wrap">
 
 
-                    <ul class="flex flex-col sm:flex-row gap-3 items-center dropdown-content">
+                    <ul class="flex gap-3 items-center dropdown-content">
                         @auth
                             @if (Auth::user()->is_admin == 1)
                                 <li class="px-2 hover:text-red-400"><a href="{{ route('dashboard') }}"></i>@lang('header.dashboard')</a>

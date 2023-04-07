@@ -1,4 +1,5 @@
 <div>
+    
     <div class="bg-white flex">
         <div class="flex items-center justify-end">
             @foreach ($categories as $cat)
