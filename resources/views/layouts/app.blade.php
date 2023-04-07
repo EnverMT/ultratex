@@ -26,7 +26,9 @@
 <body class="flex flex-col h-screen justify-between">
     <div>
         @include('components.header')
-        {{ $slot }}
+        <div class=" max-w-screen-xl mx-auto">
+            {{ $slot }}
+        </div>
     </div>
     @include('components.footer')
     @livewireScripts
