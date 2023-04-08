@@ -21,7 +21,7 @@
 
                 {{-- details --}}
                 <div class="flex flex-col items-center">
-                    <div class="font-bold text-xl">{{ $product->title }}</div>
+                    <div class="font-bold text-xl"><p class="text-center"style="white-space: pre-line;">{{ $product->title }}</p></div>
                     <div class="  font-bold text-2xl"><span class="text-red-700">{{ number_format($product->price * $paymentTypes[0]->interest, 0, ",", " ") }}</span> сум</div>
 
 
