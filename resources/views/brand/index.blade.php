@@ -4,6 +4,7 @@
         <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
+                    
                     <div class="border border-gray-600 rounded-md inline-block m-4 hover:bg-blue-800 bg-blue-600">
                         <a class=" py-2 px-4" href={{ route('brand.create') }}>Add new Brand</a>
                     </div>
@@ -65,6 +66,7 @@
                             @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
