@@ -60,7 +60,7 @@
                     transition-all duration-300 border border-transparent hover:border-gray-400 
                     hover:shadow-md sm:flex sm:justify-start">
                         <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
-                            class="w-full rounded-lg sm:w-20 sm:max-h-20" />
+                            class="rounded-lg w-full sm:w-20 sm:max-h-20" />
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                             <div class="mt-5 sm:mt-0">
                                 <h2 class="text-lg font-bold text-gray-900">{{ $product->title }}</h2>

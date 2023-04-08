@@ -63,7 +63,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('product.show', compact('product'));
+        $paymentTypes = \App\Models\PaymentType::get();
+
+        return view('product.show', compact('product', 'paymentTypes'));
     }
 
     /**

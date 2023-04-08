@@ -12,16 +12,17 @@
                 {{-- pictures --}}
                 <div class="max-w-xl mx-auto">
                     @foreach ($product->pictures as $pic)
-                        <div class=" max-w-xl max-h-xl object-scale-down mx-auto">
-                            <img src="{{ asset('/storage/' . $pic->url) }}" alt="Фото">
+                        <div>
+                            <img class=" max-w-60 max-h-60 object-scale-down mx-auto"
+                                src="{{ asset('/storage/' . $pic->url) }}" alt="Фото">
                         </div>
                     @endforeach
                 </div>
 
                 {{-- details --}}
                 <div class="flex flex-col items-center">
-                    <div class="uppercase font-bold text-xl">{{ $product->title }}</div>
-                    <div class="  font-bold text-2xl"><span class="text-red-700">{{ $product->price }}</span> сум</div>
+                    <div class="font-bold text-xl">{{ $product->title }}</div>
+                    <div class="  font-bold text-2xl"><span class="text-red-700">{{ number_format($product->price, 0, ",", " ") }}</span> сум</div>
 
 
                     <span class=" mt-10 uppercase">
@@ -32,43 +33,17 @@
 
                     <table class="mt-2">
                         <tbody>
-                            <tr>
-                                <td class="">
-                                    <span class="text-red-500">3</span>
-                                    <span class="pr-6"> месяца</span>
-                                </td>
-                                <td class=" "> <span
-                                        class="text-red-500">{{ round($product->price / (1 * 3)) }}</span>
-                                    сум/месяц</td>
-                            </tr>
-                            <tr>
-                                <td class="">
-                                    <span class="text-red-500">6</span>
-                                    <span class="pr-6"> месяцев</span>
-                                </td>
-                                <td class=" "> <span
-                                        class="text-red-500">{{ round($product->price / (2 * 3)) }}</span>
-                                    сум/месяц</td>
-                            </tr>
-                            <tr>
-                                <td class="">
-                                    <span class="text-red-500">9</span>
-                                    <span class="pr-6"> месяцев</span>
-                                </td>
-                                <td class=" "> <span
-                                        class="text-red-500">{{ round($product->price / (3 * 3)) }}</span>
-                                    сум/месяц</td>
-                            </tr>
-                            <tr>
-                                <td class="">
-                                    <span class="text-red-500">12</span>
-                                    <span class="pr-6"> месяцев</span>
-                                </td>
-                                <td class=" "> <span
-                                        class="text-red-500">{{ round($product->price / (4 * 3)) }}</span>
-                                    сум/месяц</td>
-                            </tr>
-
+                            @foreach ($paymentTypes as $pt)
+                                <tr>
+                                    <td>
+                                        <span class="text-red-500">{{$pt->months}}</span>
+                                        <span class="pr-6"> месяца</span>
+                                    </td>
+                                    <td class=" "> <span
+                                            class="text-red-500">{{ number_format(($product->price * $pt->interest) / ($pt->months), 0, ",", " ") }}</span>
+                                        сум/месяц</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
