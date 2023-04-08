@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Picture;
 use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $products = Product::with(['brand', 'pictures'])->get();
+
         return view('product.index', compact('products'));
     }
 
@@ -28,6 +34,7 @@ class ProductController extends Controller
     {
         $brands = Brand::all();
         $categories = Category::all();
+
         return view('product.create', compact('brands', 'categories'));
     }
 
@@ -43,7 +50,7 @@ class ProductController extends Controller
                 $path = $image->store('images', ['disk' => 'public']);
                 Picture::create([
                     'product_id' => $product->id,
-                    'url' => $path
+                    'url' => $path,
                 ]);
             }
         }
@@ -65,6 +72,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $brands = Brand::all();
+
         return view('product.edit', compact('product', 'brands'));
     }
 
@@ -73,13 +81,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //dd($request->url);
+        // dd($request->url);
         if ($request->file('url')) {
             foreach ($request->file('url') as $image) {
                 $path = $image->store('images', ['disk' => 'public']);
                 Picture::create([
                     'product_id' => $product->id,
-                    'url' => $path
+                    'url' => $path,
                 ]);
             }
         }
@@ -97,12 +105,13 @@ class ProductController extends Controller
         $pictures = Picture::where('product_id', '=', $product->id)->get();
 
         foreach ($pictures as $pic) {
-            $url = '/public/' . $pic->url;
+            $url = '/public/'.$pic->url;
             !is_null($pic->url) && Storage::delete($url);
             $pic->delete();
         }
 
         $product->delete();
+
         return redirect()->route('product.index')->with('success', 'product deleted');
     }
 
