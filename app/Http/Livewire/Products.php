@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\PaymentType;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -10,6 +11,7 @@ class Products extends Component
 {
     public $selectedCategory = null;
     public $selectedSubCategory = null;
+    public $paymentTypes = null;
 
     public $categories;
     public $subcategories;
@@ -18,6 +20,7 @@ class Products extends Component
     {
         $this->categories = Category::where('isMain', true)->get();
         $this->subcategories = Category::where('isMain', false)->get();
+        $this->paymentTypes = PaymentType::get();
     }
 
     public function selectCategory(int $selectedCategory = null)

@@ -39,14 +39,50 @@
         }
     </style>
 
-    Products:
-    @foreach ($products as $p)
-        <div class="m-2 bg-red-200">
-            <div> Title: {{ $p->title }}</div>
-            <div> Category: {{ $p->brand->category->parent->title}}</div>
-            <div> SubCategory: {{ $p->brand->category->title}}</div>
+
+
+    @foreach ($products as $product)
+        <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
+            <div class="rounded-lg w-full">
+                <div
+                    class="justify-between mb-6 rounded-lg p-6 
+                    transition-all duration-300 border border-transparent hover:border-gray-400 
+                    hover:shadow-md sm:flex sm:justify-start">
+                    <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
+                        class="w-full rounded-lg sm:w-40" />
+                    <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                        <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">{{ $product->title }}</h2>
+                            <p class="mt-1 text-xs text-gray-700">{{ $product->model }}</p>
+                        </div>
+                        <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div class="flex flex-col items-start hover:shad">
+                                <p class="text-xs text-gray-400 line-through">
+                                    {{ number_format($product->price * $paymentTypes[0]->interest * 1.1, 0, ',', ' ') }}
+                                    сум</p>
+                                <p class="text-base text-red-500">
+                                    {{ number_format($product->price * $paymentTypes[0]->interest, 0, ',', ' ') }} сум
+                                </p>
+                                <p class="text-xs">от
+                                    {{ number_format(($product->price * $paymentTypes[3]->interest) / 12, 0, ',', ' ') }}
+                                    сум / мес</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     @endforeach
+
+
+
+
+
+
+
+
 
 
 </div>

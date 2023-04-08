@@ -22,8 +22,9 @@ jobs:
           username: ${{secrets.LOGIN}}
           key: ${{secrets.KEY}}
           script: |
-            cd /var/www/ultratex.uz
+            cd /var/www/ultratex.uz            
             sudo git pull
+            sudo composer update
             sudo php artisan migrate
             sudo npm run build
 
