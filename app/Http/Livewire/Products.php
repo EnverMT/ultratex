@@ -9,8 +9,8 @@ use Livewire\Component;
 
 class Products extends Component
 {
-    public $selectedCategory = null;
-    public $selectedSubCategory = null;
+    public ?Category $selectedCategory = null;
+    public ?Category $selectedSubCategory = null;
     public $paymentTypes = null;
 
     public $categories;
@@ -25,13 +25,14 @@ class Products extends Component
 
     public function selectCategory(int $selectedCategory = null)
     {
-        $this->selectedCategory = $selectedCategory;
+        $this->selectedCategory = Category::find($selectedCategory);
         $this->selectedSubCategory = null; // TO DO improve filter ability
     }
 
     public function selectSubCategory(int $selectedSubCategory = null)
     {
-        $this->selectedSubCategory = $selectedSubCategory;
+        $this->selectedSubCategory = Category::find($selectedSubCategory);
+        $this->selectedCategory = null;
     }
 
     public function render()
@@ -39,11 +40,11 @@ class Products extends Component
         $query = Product::with(['pictures', 'brand', 'brand.category', 'brand.category.parent']);
 
         if ($this->selectedCategory != null && $this->selectedSubCategory == null) {
-            $query->whereRelation('brand.category.parent', 'id', '=', $this->selectedCategory);
+            $query->whereRelation('brand.category.parent', 'id', '=', $this->selectedCategory->id);
         }
 
         if ($this->selectedSubCategory != null) {
-            $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategory);
+            $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategory->id);
         }
 
         return view('livewire.products', ['products' => $query->paginate(8)]);
