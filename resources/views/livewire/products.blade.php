@@ -75,8 +75,10 @@
                                         {{ number_format($product->price * $paymentTypes[0]->interest, 0, ',', ' ') }}
                                         сум
                                     </p>
-                                    <p class="text-xs">от
-                                        {{ number_format(($product->price * $paymentTypes[3]->interest) / 12, 0, ',', ' ') }}
+                                    <p class="text-xs">от                                             
+                                        
+                                        {{ number_format(($product->price * $paymentTypes[count($paymentTypes)-1]->interest)
+                                         / $paymentTypes[count($paymentTypes)-1]->months, 0, ',', ' ') }}
                                         сум / мес</p>
                                 </div>
 

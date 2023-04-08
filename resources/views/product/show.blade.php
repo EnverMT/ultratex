@@ -22,7 +22,7 @@
                 {{-- details --}}
                 <div class="flex flex-col items-center">
                     <div class="font-bold text-xl">{{ $product->title }}</div>
-                    <div class="  font-bold text-2xl"><span class="text-red-700">{{ number_format($product->price, 0, ",", " ") }}</span> сум</div>
+                    <div class="  font-bold text-2xl"><span class="text-red-700">{{ number_format($product->price * $paymentTypes[0]->interest, 0, ",", " ") }}</span> сум</div>
 
 
                     <span class=" mt-10 uppercase">
@@ -49,7 +49,7 @@
 
 
 
-                    <div class="mt-10 ">{{ $product->description }}</div>
+                    <div class="mt-10 m-5" style="white-space: pre-line;"><p class="text-justify">{{ $product->description }}</p></div>
                 </div>
 
             </div>
@@ -58,9 +58,9 @@
 
 
         {{-- details --}}
-        <div class=" flex flex-col items-center m-5">
-            <div class=" w-3/4  dark:bg-slate-700 text-justify">
-                {{ $product->details }}</div>
+        <div class=" flex flex-col m-5">
+            <div class="dark:bg-slate-700 " style="white-space: pre-line;">
+                <p class="text-justify">{{ $product->details }}</p></div>
         </div>
 
 
