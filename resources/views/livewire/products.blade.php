@@ -63,7 +63,11 @@
                             class="rounded-lg w-full sm:w-20 sm:max-h-20" />
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                             <div class="mt-5 sm:mt-0">
-                                <h2 class="text-lg font-bold text-gray-900">{{ $product->title }}</h2>
+                                <h2 class="text-lg font-bold text-gray-900">
+                                    <p class="text-center" style="white-space: pre-line;">
+                                        {{ $product->title }}
+                                    </p>
+                                </h2>
                                 <p class="mt-1 text-xs text-gray-700">{{ $product->model }}</p>
                             </div>
                             <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
