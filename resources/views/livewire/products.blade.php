@@ -95,12 +95,9 @@
         </a>
     @endforeach
 
-
-
-
-
-
-
+    <div>
+        {{$products->links()}}
+    </div>
 
 
 

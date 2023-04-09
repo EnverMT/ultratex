@@ -6,9 +6,12 @@ use App\Models\Category;
 use App\Models\PaymentType;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Products extends Component
 {
+    use WithPagination;
+
     public ?Category $selectedCategory = null;
     public ?Category $selectedSubCategory = null;
     public $paymentTypes = null;
@@ -47,6 +50,6 @@ class Products extends Component
             $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategory->id);
         }
 
-        return view('livewire.products', ['products' => $query->paginate(8)]);
+        return view('livewire.products', ['products' => $query->paginate(3)]);
     }
 }
