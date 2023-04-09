@@ -19,7 +19,7 @@
                         +998 97 736
                         58 85</a></li>
                 <li class="hover:text-red-500 sm:mx-4 my-1"><a href="#"><i class="fa fa-map-marker text-red-700">
-                        </i> Бекабад, ул.Аббасова, UltraTex </a></li>
+                        </i> Бекабад, ул.Аббасова, UzBum </a></li>
                 <li class="hover:text-red-500 sm:mx-4"><a href="https://t.me/ultra_tex/31">
                         <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
             </ul>
