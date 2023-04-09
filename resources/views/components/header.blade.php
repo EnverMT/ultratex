@@ -122,8 +122,7 @@
                     </g>
                 </svg>
                 </a>
-            </div>
-            <input class="m-2 rounded-md" placeholder="Search" type="text" name="search" id="">
+            </div>            
         </div>
 
     </div>
