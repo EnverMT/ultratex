@@ -56,11 +56,11 @@
             <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
                 <div class="rounded-lg w-full">
                     <div
-                        class="justify-between mb-6 rounded-lg p-6 
+                        class="justify-between mb-2 rounded-lg p-2 
                     transition-all duration-300 border border-transparent hover:border-gray-400 
                     hover:shadow-md sm:flex sm:justify-start">
                         <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
-                            class="rounded-lg w-full sm:w-20 sm:max-h-20" />
+                             class=" object-scale-down w-20 h-20"/>
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                             <div class="mt-5 sm:mt-0">
                                 <h2 class="text-lg font-bold text-gray-900">
