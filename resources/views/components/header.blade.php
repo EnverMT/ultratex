@@ -83,8 +83,8 @@
                     <defs>
                         <linearGradient x1="80.10373" y1="235" x2="469.89627" y2="235"
                             gradientUnits="userSpaceOnUse" id="color-16362522490">
-                            <stop offset="0" stop-color="#ff9cda"></stop>
-                            <stop offset="1" stop-color="#ea4492"></stop>
+                            <stop offset="0" stop-color="#52557d"></stop>
+                            <stop offset="1" stop-color="#67609e"></stop>
                         </linearGradient>
                     </defs>
                     <g fill="url(#color-16362522490)" fill-rule="none" stroke="none" stroke-width="1" stroke-linecap="butt"

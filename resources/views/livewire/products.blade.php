@@ -57,18 +57,20 @@
                         class="justify-between mb-2 rounded-lg p-2 
                     transition-all duration-300 border border-transparent hover:border-gray-400 
                     hover:shadow-md sm:flex sm:justify-start">
-                        <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
-                            class=" object-scale-down w-20 h-20" />
+                        <div class="flex justify-center">
+                            <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
+                            class=" object-scale-down max-w-60 max-h-60 sm:w-20 sm:h-20" />
+                        </div>
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                            <div class="mt-5 sm:mt-0">
+                            <div class="mt-2 sm:mt-0">
                                 <h2 class="text-lg font-bold text-gray-900">
-                                    <p class="text-center" style="white-space: pre-line;">
+                                    <p class="sm:text-left text-center" style="white-space: pre-line;">
                                         {{ $product->title }}
                                     </p>
                                 </h2>
-                                <p class="mt-1 text-xs text-gray-700">{{ $product->model }}</p>
+                                <p class="mt-1 text-xs text-gray-700 text-center sm:text-left">{{ $product->model }}</p>
                             </div>
-                            <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div class="mt-4 flex justify-center sm:justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                                 <div class="flex flex-col items-start hover:shad">
                                     <p class="text-xs text-gray-400 line-through">
                                         {{ number_format($product->price * $paymentTypes[0]->interest * 1.1, 0, ',', ' ') }}
