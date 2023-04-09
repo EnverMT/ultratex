@@ -49,14 +49,14 @@
 
 
     <div class="px-2">
-        @if ($selectedCategory)
-            <span> {{ $selectedCategory->title }}</span>
+        @if ($selectedCategoryId)
+            <span> {{ App\Models\Category::find($selectedCategoryId)->title }}</span>
         @endif
 
-        @if ($selectedSubCategory)
-            <span> {{ $selectedSubCategory->parent->title }}</span>
+        @if ($selectedSubCategoryId)
+            <span> {{ App\Models\Category::find($selectedSubCategoryId)->parent->title }}</span>
             <span>/</span>
-            <span> {{ $selectedSubCategory->title }}</span>
+            <span> {{ App\Models\Category::find($selectedSubCategoryId)->title }}</span>
         @endif
     </div>
 

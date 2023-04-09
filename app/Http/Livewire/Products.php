@@ -12,11 +12,16 @@ class Products extends Component
 {
     use WithPagination;
 
-    public ?Category $selectedCategory = null;
-    public ?Category $selectedSubCategory = null;
+    public ?int $selectedCategoryId = null;
+    public ?int $selectedSubCategoryId = null;
+
     public $paymentTypes = null;
     public $search = '';
-    protected $queryString = ['search' => ['except' => '']];
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'selectedCategoryId' => ['except' => null],
+        'selectedSubCategoryId' => ['except' => null],
+    ];
 
     public $categories;
     public $subcategories;
@@ -26,30 +31,32 @@ class Products extends Component
         $this->categories = Category::where('isMain', true)->get();
         $this->subcategories = Category::where('isMain', false)->get();
         $this->paymentTypes = PaymentType::get();
+        // $this->selectedCategoryId = $this->queryString['selectedCategoryId'];
+        // $this->selectedSubCategoryId = $this->queryString['selectedSubCategoryId'];
     }
 
-    public function selectCategory(int $selectedCategory = null)
+    public function selectCategory(int $selectedCategoryId = null)
     {
-        $this->selectedCategory = Category::find($selectedCategory);
-        $this->selectedSubCategory = null; // TO DO improve filter ability
+        $this->selectedCategoryId = $selectedCategoryId;
+        $this->selectedSubCategoryId = null; // TO DO improve filter ability
     }
 
-    public function selectSubCategory(int $selectedSubCategory = null)
+    public function selectSubCategory(int $selectedSubCategoryId = null)
     {
-        $this->selectedSubCategory = Category::find($selectedSubCategory);
-        $this->selectedCategory = null;
+        $this->selectedSubCategoryId = $selectedSubCategoryId;
+        $this->selectedCategoryId = null;
     }
 
     public function render()
     {
         $query = Product::with(['pictures', 'brand', 'brand.category', 'brand.category.parent']);
 
-        if ($this->selectedCategory != null && $this->selectedSubCategory == null) {
-            $query->whereRelation('brand.category.parent', 'id', '=', $this->selectedCategory->id);
+        if ($this->selectedCategoryId != null && $this->selectedSubCategoryId == null) {
+            $query->whereRelation('brand.category.parent', 'id', '=', $this->selectedCategoryId);
         }
 
-        if ($this->selectedSubCategory != null) {
-            $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategory->id);
+        if ($this->selectedSubCategoryId != null) {
+            $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategoryId);
         }
 
         if ($this->search != '') {
