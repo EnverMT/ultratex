@@ -50,6 +50,6 @@ class Products extends Component
             $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategory->id);
         }
 
-        return view('livewire.products', ['products' => $query->paginate(3)]);
+        return view('livewire.products', ['products' => $query->paginate(8)]);
     }
 }
