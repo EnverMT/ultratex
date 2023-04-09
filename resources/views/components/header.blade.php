@@ -10,7 +10,8 @@
                                     class="fa fa-phone text-green-700"></i>
                                 +998 97 736 58 85</a></li>
                         <li class="hover:text-red-500 mx-4"><a href="https://goo.gl/maps/dR44ooM6KM863zAy6"
-                                target="_blank"><i class="fa fa-map-marker text-blue-500">
+                                target="_blank">                                
+                                <i class="fa fa-map-marker-alt text-red-500">
                                 </i> Бекабад, ул.Аббасова, UltraTex </a></li>
                         <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31" target="_blank">
                                 <i class="fa-brands fa-telegram text-blue-300"></i> ultra_tex</a></li>
