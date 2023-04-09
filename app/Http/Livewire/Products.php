@@ -16,7 +16,7 @@ class Products extends Component
     public ?Category $selectedSubCategory = null;
     public $paymentTypes = null;
     public $search = '';
-    protected $queryString = ['search'];
+    protected $queryString = ['search' => ['except' => '']];
 
     public $categories;
     public $subcategories;
