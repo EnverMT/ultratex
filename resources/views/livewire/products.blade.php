@@ -4,24 +4,32 @@
         <div class="bg-white flex">
             <div class="flex items-center justify-end">
                 @foreach ($categories as $cat)
-                    <div class="flex flex-col relative text-left dropdown gap">
-                        <span class="rounded-md shadow-sm m-1 p-1"><button
+                    <div class="flex flex-col relative text-left dropdown">
+                        <span class="rounded-md shadow-sm p-1">
+                            <button
                                 class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 
-                                transition duration-150 ease-in-out bg-white border border-gray-300 
-                                rounded-md hover:text-gray-500 hover:bg-gray-300"
+                                transition duration-150 ease-in-out  border border-gray-300 
+                                rounded-md hover:text-white
+                                
+                                bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500
+                                
+                                "
                                 type="button" aria-haspopup="true" aria-expanded="true"
-                                aria-controls="headlessui-menu-items-117" wire:click="selectCategory({{ $cat->id }})">
+                                aria-controls="headlessui-menu-items-117"
+                                wire:click="selectCategory({{ $cat->id }})">
                                 <span>{{ $cat->title }}</span>
-                            </button></span>
-    
-    
+                            </button>
+                        </span>
+
                         <div
                             class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                             <div class="absolute mx-1 left-0 origin-top-right ">
                                 @foreach ($cat->children as $scat)
                                     <div>
                                         <button wire:click="selectSubCategory({{ $scat->id }})"
-                                            class=" px-2 py-1 w-full bg-gray-200 m-1 rounded-lg hover:bg-slate-400">{{ $scat->title }}</button>
+                                            class=" transition-all duration-200 px-2 py-1 w-full rounded-md my-0.5
+                                            bg-gradient-to-r from-indigo-400 to-blue-500 hover:from-violet-500 hover:to-yellow-500
+                                            ">{{ $scat->title }}</button>
                                     </div>
                                 @endforeach
                             </div>
@@ -59,7 +67,7 @@
                     hover:shadow-md sm:flex sm:justify-start">
                         <div class="flex justify-center">
                             <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
-                            class=" object-scale-down max-w-60 max-h-60 sm:w-20 sm:h-20" />
+                                class=" object-scale-down max-w-60 max-h-60 sm:w-20 sm:h-20" />
                         </div>
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                             <div class="mt-2 sm:mt-0">
@@ -68,9 +76,11 @@
                                         {{ $product->title }}
                                     </p>
                                 </h2>
-                                <p class="mt-1 text-xs text-gray-700 text-center sm:text-left">{{ $product->model }}</p>
+                                <p class="mt-1 text-xs text-gray-700 text-center sm:text-left">{{ $product->model }}
+                                </p>
                             </div>
-                            <div class="mt-4 flex justify-center sm:justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div
+                                class="mt-4 flex justify-center sm:justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                                 <div class="flex flex-col items-start hover:shad">
                                     <p class="text-xs text-gray-400 line-through">
                                         {{ number_format($product->price * $paymentTypes[0]->interest * 1.1, 0, ',', ' ') }}
