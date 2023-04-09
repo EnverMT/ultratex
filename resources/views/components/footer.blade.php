@@ -15,13 +15,13 @@
         </div>
         <div class="basis-1/4 mx-auto w-fit">
             <ul class="flex flex-col lg:flex justify-between flex-wrap items-start">
-                <li class="hover:text-red-500 sm:mx-4"><a href="#"><i class="fa fa-phone text-red-700"></i>
-                        +998 97 736
-                        58 85</a></li>
-                <li class="hover:text-red-500 sm:mx-4 my-1"><a href="#"><i class="fa fa-map-marker text-red-700">
+                <li class="hover:text-red-500 mx-4"><a href="tel:+998977365885"><i class="fa fa-phone text-green-700"></i>
+                        +998 97 736 58 85</a></li>
+                <li class="hover:text-red-500 mx-4"><a href="https://goo.gl/maps/dR44ooM6KM863zAy6" target="_blank">
+                        <i class="fa fa-map-marker-alt text-red-500">
                         </i> Бекабад, ул.Аббасова, UzBum </a></li>
-                <li class="hover:text-red-500 sm:mx-4"><a href="https://t.me/ultra_tex/31">
-                        <i class="fa-brands fa-telegram text-red-700"></i> ultra_tex</a></li>
+                <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31" target="_blank">
+                        <i class="fa-brands fa-telegram text-blue-300"></i> UzBum</a></li>
             </ul>
         </div>
     </div>

@@ -14,7 +14,7 @@
                                 <i class="fa fa-map-marker-alt text-red-500">
                                 </i> Бекабад, ул.Аббасова, UzBum </a></li>
                         <li class="hover:text-red-500 mx-4"><a href="https://t.me/ultra_tex/31" target="_blank">
-                                <i class="fa-brands fa-telegram text-blue-300"></i> ultra_tex</a></li>
+                                <i class="fa-brands fa-telegram text-blue-300"></i> UzBum</a></li>
                     </ul>
                 </div>
 
@@ -112,7 +112,7 @@
                 </a>
             </div>
             <div>
-                <ul class="flex mx-3">
+                <ul class="flex mx-3 text-lg">
 
                     <li
                         class="px-2 hover:text-red-400  {{ session()->get('locale') == 'en' ? 'bg-green-800 rounded-md' : '' }} ">
