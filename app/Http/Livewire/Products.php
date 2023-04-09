@@ -15,6 +15,7 @@ class Products extends Component
     public ?Category $selectedCategory = null;
     public ?Category $selectedSubCategory = null;
     public $paymentTypes = null;
+    public $search = '';
 
     public $categories;
     public $subcategories;
@@ -48,6 +49,10 @@ class Products extends Component
 
         if ($this->selectedSubCategory != null) {
             $query->whereRelation('brand.category', 'id', '=', $this->selectedSubCategory->id);
+        }
+
+        if ($this->search != '') {
+            $query->where('title', 'like', '%'.$this->search.'%');
         }
 
         return view('livewire.products', ['products' => $query->paginate(8)]);

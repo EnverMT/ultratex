@@ -38,9 +38,12 @@
                 @endforeach
             </div>
         </div>
+
+        {{-- Search --}}
         <div class="mx-2">
-            <input class="rounded-lg" type="text" name="search" id="search" placeholder="Search">
+            <input wire:model="search" class="rounded-lg" type="text" name="search" id="search" placeholder="Search">
         </div>
+
     </div>
 
 
