@@ -1,4 +1,5 @@
 <div>
+    
 
     {{-- Category menu --}}
     <div class="bg-white flex">
@@ -31,13 +32,7 @@
         </div>
     </div>
 
-    <style>
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            transform: translate(0) scale(1);
-            visibility: visible;
-        }
-    </style>
+
 
     <div class="px-2">
         @if ($selectedCategory)
@@ -60,7 +55,7 @@
                     transition-all duration-300 border border-transparent hover:border-gray-400 
                     hover:shadow-md sm:flex sm:justify-start">
                         <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
-                             class=" object-scale-down w-20 h-20"/>
+                            class=" object-scale-down w-20 h-20" />
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                             <div class="mt-5 sm:mt-0">
                                 <h2 class="text-lg font-bold text-gray-900">
@@ -79,10 +74,15 @@
                                         {{ number_format($product->price * $paymentTypes[0]->interest, 0, ',', ' ') }}
                                         сум
                                     </p>
-                                    <p class="text-xs">от                                             
-                                        
-                                        {{ number_format(($product->price * $paymentTypes[count($paymentTypes)-1]->interest)
-                                         / $paymentTypes[count($paymentTypes)-1]->months, 0, ',', ' ') }}
+                                    <p class="text-xs">от
+
+                                        {{ number_format(
+                                            ($product->price * $paymentTypes[count($paymentTypes) - 1]->interest) /
+                                                $paymentTypes[count($paymentTypes) - 1]->months,
+                                            0,
+                                            ',',
+                                            ' ',
+                                        ) }}
                                         сум / мес</p>
                                 </div>
 
@@ -96,8 +96,16 @@
     @endforeach
 
     <div>
-        {{$products->links()}}
+        {{ $products->links() }}
     </div>
+
+    <style>
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            transform: translate(0) scale(1);
+            visibility: visible;
+        }
+    </style>
 
 
 
