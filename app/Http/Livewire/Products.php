@@ -60,7 +60,9 @@ class Products extends Component
         }
 
         if ($this->search != '') {
-            $query->where('title', 'like', '%'.$this->search.'%');
+            $query->where('title', 'ilike', '%'.$this->search.'%')
+                    ->orWhere('model', 'ilike', '%'.$this->search.'%');
+            // ILIKE works only on PostgreSQL
         }
 
         return view('livewire.products', ['products' => $query->paginate(8)]);
