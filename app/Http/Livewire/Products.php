@@ -37,12 +37,14 @@ class Products extends Component
 
     public function selectCategory(int $selectedCategoryId = null)
     {
+        $this->resetPage();
         $this->selectedCategoryId = $selectedCategoryId;
         $this->selectedSubCategoryId = null; // TO DO improve filter ability
     }
 
     public function selectSubCategory(int $selectedSubCategoryId = null)
     {
+        $this->resetPage();
         $this->selectedSubCategoryId = $selectedSubCategoryId;
         $this->selectedCategoryId = null;
     }
