@@ -12,7 +12,7 @@
                         <li class="hover:text-red-500 mx-4"><a href="https://goo.gl/maps/dR44ooM6KM863zAy6"
                                 target="_blank">
                                 <i class="fa fa-map-marker-alt text-red-500">
-                                </i> Бекабад, ул.Аббасова, UzBum </a></li>
+                                </i> Бекабад, ул.Аббасова, Rzon </a></li>
                         <li class="hover:text-red-500 mx-4"><a href="https://t.me/rzon_uz/1" target="_blank">
                                 <i class="fa-brands fa-telegram text-blue-300"></i> Rzon</a></li>
                     </ul>
