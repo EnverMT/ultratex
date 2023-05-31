@@ -9,7 +9,12 @@
         {{-- main content --}}
         <div class="flex flex-col items-center">
             <div class="flex flex-col items-center ">
-                <div class="font-bold text-md m-2"><p class="text-center" style="white-space: pre-line;">{{$product->brand->title}} - {{ $product->model }}</p></div>
+                <div class="font-bold text-md m-2">
+                    <p class="text-center" style="white-space: pre-line;">{{ $product->brand->title }} -
+                        {{ $product->model }}</p>
+                </div>
+
+
                 {{-- pictures --}}
                 <div class="max-w-xl mx-auto">
                     @foreach ($product->pictures as $pic)
@@ -22,8 +27,22 @@
 
                 {{-- details --}}
                 <div class="flex flex-col items-center">
-                    <div class="font-bold text-xl m-2"><p class="text-center" style="white-space: pre-line;">{{ $product->title }}</p></div>                    
-                    <div class="  font-bold text-2xl"><span class="text-red-700">{{ number_format($product->price * $paymentTypes[0]->interest, 0, ",", " ") }}</span> сум</div>
+                    <div class="font-bold text-xl m-2">
+                        <p class="text-center" style="white-space: pre-line;">{{ $product->title }}</p>
+                    </div>
+                    <div class="  font-bold text-2xl"><span
+                            class="text-red-700">{{ number_format($product->price * $paymentTypes[0]->interest, 0, ',', ' ') }}</span>
+                        сум</div>
+                    {{-- cost in dollar --}}
+
+                    @php
+                        $dollarSum = 11400;
+                    @endphp
+
+                    <div class=" border border-gray-400 rounded-md py-1 px-2 text-amber-500 text-xs">~
+                        {{ number_format(($product->price * $paymentTypes[0]->interest) / $dollarSum, 0, ',', ' ') }}$
+                    </div>
+
 
 
                     <span class=" mt-10 uppercase">
@@ -37,11 +56,11 @@
                             @foreach ($paymentTypes as $pt)
                                 <tr>
                                     <td>
-                                        <span class="text-red-500">{{$pt->months}}</span>
+                                        <span class="text-red-500">{{ $pt->months }}</span>
                                         <span class="pr-6"> месяца</span>
                                     </td>
                                     <td class=" "> <span
-                                            class="text-red-500">{{ number_format(($product->price * $pt->interest) / ($pt->months), 0, ",", " ") }}</span>
+                                            class="text-red-500">{{ number_format(($product->price * $pt->interest) / $pt->months, 0, ',', ' ') }}</span>
                                         сум/месяц</td>
                                 </tr>
                             @endforeach
@@ -50,7 +69,9 @@
 
 
 
-                    <div class="mt-10 m-5" style="white-space: pre-line;"><p class="text-justify">{{ $product->description }}</p></div>
+                    <div class="mt-10 m-5" style="white-space: pre-line;">
+                        <p class="text-justify">{{ $product->description }}</p>
+                    </div>
                 </div>
 
             </div>
@@ -61,7 +82,8 @@
         {{-- details --}}
         <div class=" flex flex-col m-5">
             <div class="dark:bg-slate-700 " style="white-space: pre-line;">
-                <p class="text-justify">{{ $product->details }}</p></div>
+                <p class="text-justify">{{ $product->details }}</p>
+            </div>
         </div>
 
 
