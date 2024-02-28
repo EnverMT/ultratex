@@ -74,10 +74,10 @@
             <div>
                 <ul class="flex mx-3 text-lg">
 
-                    <li
+                    {{-- <li
                         class="px-2 hover:text-red-400  {{ session()->get('locale') == 'en' ? 'bg-green-800 rounded-md' : '' }} ">
                         <a href={{ route('changeLang', ['lang' => 'en']) }}>En</a>
-                    </li>
+                    </li> --}}
                     <li
                         class="px-2 hover:text-red-400 {{ session()->get('locale') == 'ru' ? 'bg-green-800 rounded-md' : '' }}">
                         <a href={{ route('changeLang', ['lang' => 'ru']) }}>Ru</a>
