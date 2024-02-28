@@ -36,17 +36,17 @@
                     {{-- cost in dollar --}}
 
                     @php
-                        $dollarSum = 11400;
+                        $dollarSum = 12500;
                     @endphp
 
-                    {{-- 
+                    {{--
 
                     <div class=" border border-gray-400 rounded-md py-1 px-2 text-amber-500 text-xs">~
                         {{ number_format(($product->price * $paymentTypes[0]->interest) / $dollarSum, 0, ',', ' ') }}$
                     </div>
 
 
-                    
+
                     <span class=" mt-10 uppercase">
                         <i class="fa-regular fa-star text-green-600"></i>
                         Рассрочка
