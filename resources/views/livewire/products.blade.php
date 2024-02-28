@@ -7,12 +7,12 @@
                     <div class="flex flex-col relative text-left dropdown">
                         <span class="rounded-md shadow-sm p-1">
                             <button
-                                class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 
-                                transition duration-150 ease-in-out  border border-gray-300 
+                                class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700
+                                transition duration-150 ease-in-out  border border-gray-300
                                 rounded-md hover:text-white
-                                
+
                                 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500
-                                
+
                                 "
                                 type="button" aria-haspopup="true" aria-expanded="true"
                                 aria-controls="headlessui-menu-items-117"
@@ -65,8 +65,8 @@
             <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
                 <div class="rounded-lg w-full">
                     <div
-                        class="justify-between mb-2 rounded-lg p-2 
-                    transition-all duration-300 border border-transparent hover:border-gray-400 
+                        class="justify-between mb-2 rounded-lg p-2
+                    transition-all duration-300 border border-transparent hover:border-gray-400
                     hover:shadow-md sm:flex sm:justify-start">
                         <div class="flex justify-center">
                             <img src="{{ asset('/storage/' . $product->pictures[0]->url) }}" alt="Фото"
@@ -92,7 +92,8 @@
                                         {{ number_format($product->price * $paymentTypes[0]->interest, 0, ',', ' ') }}
                                         сум
                                     </p>
-                                    <p class="text-xs">от
+
+                                    {{-- <p class="text-xs">от
 
                                         {{ number_format(
                                             ($product->price * $paymentTypes[count($paymentTypes) - 1]->interest) /
@@ -101,7 +102,8 @@
                                             ',',
                                             ' ',
                                         ) }}
-                                        сум / мес</p>
+                                        сум / мес</p> --}}
+
                                 </div>
 
                             </div>
